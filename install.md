@@ -4,7 +4,8 @@ _Installing Python
 Based on the Operating System of your PC, you can download and install Python's latest as well as older versions. Please find below instructions for the same based on your OS.
 
 
-### Installing (for Windows)
+## Installing (for Windows)
+
 Download the windows installer for the python version you desire from [Python Downloads](https://www.python.org/downloads/)
 
 Double-click on the downloaded file and follow the instructions as requested.
@@ -76,4 +77,19 @@ Once done, you can run this command to check if you have successfully installed 
 python3 --version
 ```
 
+## Maintaining Database file
+
+To create/add new tables, run the following commands before starting the server:
+```bash
+flask shell
+from app import db
+db.create_all()
+````
+
+To delete all the tables, run following commands before starting the server:
+```bash
+flask shell
+from app import db
+db.drop_all()
+```
 
