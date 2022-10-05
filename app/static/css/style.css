@@ -1,3 +1,9 @@
+body{
+    background:url('overlay.png'), url('Wolfplaza.jpg')
+    background-size:cover;
+    background-repeat:no-repeat;
+ }
+
  .feedback{
     width: 100%;
     max-width: 780px;
