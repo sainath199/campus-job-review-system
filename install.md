@@ -1,4 +1,4 @@
-Installing Python
+_Installing Python
 ==========================
 
 Based on the Operating System of your PC, you can download and install Python's latest as well as older versions. Please find below instructions for the same based on your OS.
