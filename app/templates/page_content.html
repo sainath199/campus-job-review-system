@@ -9,6 +9,10 @@
                 <tr>
                     <th>Job Title</th>
                     <th>Job Description</th>
+                    <th>Department</th>
+                    <th>Location(s)</th>
+                    <th>Hourly Pay</th>
+                    <th>Employee Benefits</th>
                     <th>Review</th>
                     <th>Rating</th>
                 </tr>
@@ -18,6 +22,10 @@
                 <tr>
                     <td><strong>{{ entry.job_title }}</strong></td>
                     <td>{{ entry.job_description }}</td>
+                    <td>{{ entry.department }}</td>
+                    <td>{{ entry.locations }}</td>
+                    <td>{{ entry.hourly_pay }}</td>
+                    <td>{{ entry.benefits }}</td>
                     <td>{{ entry.review }}</td>
                     <td>{{ entry.rating }}</td>
                     <!-- <td>
@@ -37,10 +45,8 @@
                 </tr>
                 {% endfor %}
                 </tbody>
-
             </table>
         </div>
-
     </div>
 </div>
 

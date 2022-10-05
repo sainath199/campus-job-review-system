@@ -4,13 +4,13 @@ from app.models import Reviews
 
 
 @app.route('/review')
-def index():
+def review():
     entries = Reviews.query.all()
     return render_template('review-page.html', entries=entries)
 
 
 @app.route('/pageContent')
-def review():
+def page_content():
     entries = Reviews.query.all()
     return render_template('page_content.html', entries=entries)
 
@@ -27,9 +27,14 @@ def add():
         form = request.form
         title = form.get('job_title')
         description = form.get('job_description')
+        department = form.get('department')
+        locations = form.get('locations')
+        hourly_pay = form.get('hourly_pay')
+        benefits = form.get('benefits')
         review = form.get('review')
         rating = form.get('rating')
-        entry = Reviews(job_title=title, job_description=description, review=review, rating=rating)
+
+        entry = Reviews(job_title = title, job_description = description, department = department, locations = locations, hourly_pay = hourly_pay, benefits = benefits, review=review, rating=rating)
         db.session.add(entry)
         db.session.commit()
         return redirect('/')
@@ -51,10 +56,18 @@ def update(id):
             form = request.form
             title = form.get('job_title')
             description = form.get('job_description')
+            department = form.get('department')
+            locations = form.get('locations')
+            hourly_pay = form.get('hourly_pay')
+            benefits = form.get('benefits')
             review = form.get('review')
             rating = form.get('rating')
             entry.title = title
             entry.description = description
+            entry.department = department
+            entry.locations = locations
+            entry.hourly_pay = hourly_pay
+            entry.benefits = benefits
             entry.review = review
             entry.rating = rating
             db.session.commit()
