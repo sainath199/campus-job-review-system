@@ -1,22 +1,54 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
 
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                <a href="/review"> <button class="btn btn-primary" type="submit">
-                            Add Review
-                        </button></a>
-                <a href="/pageContent"> <button class="btn btn-primary" type="submit">
-                            View Reviews
-                </button></a>
+<div class="container-fluid banner">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-md">
+                <div class="navbar-brand">SPITAL</div>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">PORTFOLIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTACT</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-8 offset-md-2 info">
+            <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <h1 class="text-center">SPITAL</h1>
+                  </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col">
+
+                    </div>
+                  </div>
+                <div class = "row d-flex justify-content-around">
+                    
+                        <a href="/review"><button  type="submit" class="btn btn-outline-danger btn-lg text-center" >Add Reviews</button></a>
+                
+                        <a href = "/pageContent"><button  type="submit" class="btn btn-outline-danger btn-lg text-center">View Reviews</button></a>
+
+                    
+                </div>
+              </div>
+            
+            
+            <!-- <a href="#" class="btn text-center">GET STARTED</a> -->
+            
         </div>
     </div>
 </div>
-
 {% endblock %}
