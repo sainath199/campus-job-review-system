@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="post">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="job_title" placeholder="Job Title" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="job_description" cols="100"
+                                      placeholder="Add a Job Description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="review" placeholder="Add a Review" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="rating" placeholder="Rate in range of 1 to 5" required>
+                        </div>
+                        <button class="btn btn-primary" type="submit">
+                            Add
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Job Description</th>
+                    <th>Review</th>
+                    <th>Rating</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entry in entries %}
+                <tr>
+                    <td><strong>{{ entry.job_title }}</strong></td>
+                    <td>{{ entry.job_description }}</td>
+                    <td>{{ entry.review }}</td>
+                    <td>{{ entry.rating }}</td>
+                    <!-- <td>
+                        <a class="{{ 'btn btn-success' if entry.status else 'btn btn-dark'}}"
+                           href="/turn/{{ entry.id }}">
+                            Turn Status
+                        </a>
+                        <a class="btn btn-danger"
+                           href="/delete/{{ entry.id }}">
+                            Delete
+                        </a>
+                        <a class="btn btn-info"
+                           href="/update/{{ entry.id }}">
+                            Edit
+                        </a>
+                    </td> -->
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
