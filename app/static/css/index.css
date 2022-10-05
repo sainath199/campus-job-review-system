@@ -50,11 +50,11 @@ body{
 	margin-left:50%;
 	transform: translateX(-50%);
 	color: #fff;
-	background: #e91d43;
+	/* background: #e91d43; */
 	padding:10px 20px; 
 	font-size: 2em;
-	font-weight: 600;
+	font-weight: 600;	
 }
-.banner .info a:hover{
+/* .banner .info a:hover{
 	background: #e91e63;
-}
+} */

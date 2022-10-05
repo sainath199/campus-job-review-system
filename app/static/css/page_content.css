@@ -1,0 +1,6 @@
+body{
+    background:url('overlay.png'), url('Wolfplaza.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+    color: black;
+}
