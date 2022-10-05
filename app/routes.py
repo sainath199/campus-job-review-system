@@ -3,9 +3,20 @@ from app import app, db
 from app.models import Reviews
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/review')
 def index():
+    entries = Reviews.query.all()
+    return render_template('review-page.html', entries=entries)
+
+
+@app.route('/pageContent')
+def review():
+    entries = Reviews.query.all()
+    return render_template('page_content.html', entries=entries)
+
+@app.route('/')
+@app.route('/home')
+def home():
     entries = Reviews.query.all()
     return render_template('index.html', entries=entries)
 
@@ -18,7 +29,7 @@ def add():
         description = form.get('job_description')
         review = form.get('review')
         rating = form.get('rating')
-        entry = Reviews(job_title = title, job_description = description, review=review, rating=rating)
+        entry = Reviews(job_title=title, job_description=description, review=review, rating=rating)
         db.session.add(entry)
         db.session.commit()
         return redirect('/')
