@@ -1,52 +1,25 @@
-# Example Python Flask Crud
+# ncsu-campus-jobs-review-system
 
- Simple example python flask crud app for sqlite.
- 
-## Screenshots
+This is a Flask App for NCSU Campus Job Review System. Here students from NCSU can register themselves and search for vacancies at various On-Campus stores. 
 
+## Pre-requisites
+To run these scripts, you will require Python installed on your PC. Please visit [Python Installers](https://www.python.org/downloads/) to download the lastest python version. Apart from that, other requirements can be installed with the help of requirements.txt.
 
-![image](screenshots.png)  
- 
- 
-### Installing (for linux)
+## Installation
+Initially you can check whether your system has python pre-installed or not, usually nowadays in most of the systems, be it Windows or MacOS, python is pre-installed. 
 
-open the terminal and follow the white rabbit.
+To check whether you have python installed or not, you can open CMD or a Terminal and run the command "python --version". If the CMD shows the version such as Python 3.6.7 then your system already has python installed and you just need to clone the repository and run the python scripts. 
 
+If this is not the case, then you need to download python installer package from [Python Installers](https://www.python.org/downloads/) based on your system's operating system and install it and you can further clone this repository to execute the scripts.
 
-```
-git clone https://github.com/gurkanakdeniz/example-flask-crud.git
-```
-```
-cd example-flask-crud/
-```
-```
-python3 -m venv venv
-```
-```
-source venv/bin/activate
-```
-```
-pip install --upgrade pip
-```
-```
-pip install -r requirements.txt
-```
-```
-export FLASK_APP=crudapp.py
-```
-```
-flask db init
-```
-```
-flask db migrate -m "entries table"
-```
-```
-flask db upgrade
-```
-```
-flask run
-```
+You can refer [INSTALL.md](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/INSTALL.md) for the complete installation steps based on your OS.
 
-## License
+## Contribution Code of Conduct
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+The rules listed below are to be followed by the ones who will be contributing to the code in the repository:
+  
+  - All the branches used to merge any code into the main branch should start with "KAPSS-".
+  - Atleast one review/approval is required from any other contributors of the project to merge a commit to the main branch.
+  - It is recommended to delete the branch as soon as it is merged to the main branch to avoid stale branches in the repository.
+  - It is encouraged to add name tags such as "feature-" or "patch-" in the branches if it is used to add code-patches or features in the project.
+  
