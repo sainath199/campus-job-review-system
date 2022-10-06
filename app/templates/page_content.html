@@ -4,51 +4,71 @@
 <link rel="stylesheet" href="{{url_for('static', filename='/css/page_content.css')}}"/>
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>Job Title</th>
-                    <th>Job Description</th>
-                    <th>Department</th>
-                    <th>Location(s)</th>
-                    <th>Hourly Pay</th>
-                    <th>Employee Benefits</th>
-                    <th>Review</th>
-                    <th>Rating</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for entry in entries %}
-                <tr>
-                    <td><strong>{{ entry.job_title }}</strong></td>
-                    <td>{{ entry.job_description }}</td>
-                    <td>{{ entry.department }}</td>
-                    <td>{{ entry.locations }}</td>
-                    <td>{{ entry.hourly_pay }}</td>
-                    <td>{{ entry.benefits }}</td>
-                    <td>{{ entry.review }}</td>
-                    <td>{{ entry.rating }}</td>
-                    <!-- <td>
-                        <a class="{{ 'btn btn-success' if entry.status else 'btn btn-dark'}}"
-                           href="/turn/{{ entry.id }}">
-                            Turn Status
-                        </a>
-                        <a class="btn btn-danger"
-                           href="/delete/{{ entry.id }}">
-                            Delete
-                        </a>
-                        <a class="btn btn-info"
-                           href="/update/{{ entry.id }}">
-                            Edit
-                        </a>
-                    </td> -->
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+        <div class="col-md-12">
+            <nav class="navbar navbar-md">
+                <div class="navbar-brand">NC State Campus Jobs</div>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">PORTFOLIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTACT</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
+        <div style="background-color: white;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Job Description</th>
+                        <th>Department</th>
+                        <th>Location(s)</th>
+                        <th>Hourly Pay</th>
+                        <th>Employee Benefits</th>
+                        <th>Review</th>
+                        <th>Rating</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for entry in entries %}
+                    <tr>
+                        <td><strong>{{ entry.job_title }}</strong></td>
+                        <td>{{ entry.job_description }}</td>
+                        <td>{{ entry.department }}</td>
+                        <td>{{ entry.locations }}</td>
+                        <td>{{ entry.hourly_pay }}</td>
+                        <td>{{ entry.benefits }}</td>
+                        <td>{{ entry.review }}</td>
+                        <td>{{ entry.rating }}</td>
+                        <!-- <td>
+                            <a class="{{ 'btn btn-success' if entry.status else 'btn btn-dark'}}"
+                               href="/turn/{{ entry.id }}">
+                                Turn Status
+                            </a>
+                            <a class="btn btn-danger"
+                               href="/delete/{{ entry.id }}">
+                                Delete
+                            </a>
+                            <a class="btn btn-info"
+                               href="/update/{{ entry.id }}">
+                                Edit
+                            </a>
+                        </td> -->
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+        </div>
+
 </div>
 
 {% endblock %}

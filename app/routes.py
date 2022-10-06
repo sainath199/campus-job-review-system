@@ -11,8 +11,9 @@ def review():
 
 @app.route('/pageContent')
 def page_content():
-    entries = Reviews.query.all()
-    return render_template('page_content.html', entries=entries)
+
+        entries = Reviews.query.all()
+        return render_template('page_content.html', entries=entries)
 
 @app.route('/')
 @app.route('/home')
