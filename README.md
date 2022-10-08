@@ -1,4 +1,4 @@
-# ncsu-campus-jobs-review-system
+# NC State Jobs Review System
 
 This is a Flask App for NCSU Campus Job Review System. Here students from NCSU can register themselves and search for vacancies at various On-Campus stores. 
 
