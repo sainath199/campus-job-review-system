@@ -4,8 +4,8 @@ Installing Python
 Based on the Operating System of your PC, you can download and install Python's latest as well as older versions. Please find below instructions for the same based on your OS.
 
 
+## Installing (for Windows)
 
-## Windows
 Download the windows installer for the python version you desire from [Python Downloads](https://www.python.org/downloads/)
 
 Double-click on the downloaded file and follow the instructions as requested.
@@ -19,6 +19,40 @@ To check python version, run this command in your CMD or Terminal:
 ```bash
 python --version
 ```
+```
+git clone https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system.git
+```
+```
+cd ncsu-campus-jobs-review-system/
+```
+```
+python -m venv venv
+```
+```
+.\venv\Scripts\activate
+```
+```
+pip install --upgrade pip
+```
+```
+pip install -r requirements.txt
+```
+```
+set FLASK_APP=crudapp.py
+```
+```
+flask db init
+```
+```
+flask db migrate -m "entries table"
+```
+```
+flask db upgrade
+```
+```
+flask run
+```
+
 
 ## Mac OS
 
@@ -42,3 +76,20 @@ Once done, you can run this command to check if you have successfully installed 
 ```bash
 python3 --version
 ```
+
+## Maintaining Database file
+
+To create/add new tables, run the following commands before starting the server:
+```bash
+flask shell
+from app import db
+db.create_all()
+````
+
+To delete all the tables, run following commands before starting the server:
+```bash
+flask shell
+from app import db
+db.drop_all()
+```
+
