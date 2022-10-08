@@ -2,8 +2,16 @@
 {% block content %}
 
 <link rel="stylesheet" href="{{url_for('static', filename='/css/page_content.css')}}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
+        <form class="filter" action="/pageContentPost" method="post">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <br><br>
         <div style="background-color: white;">
-            <table class="table">
+            <table class="sortable">
                 <thead>
                     <tr>
                         <th>Job Title</th>
@@ -15,9 +23,10 @@
                         <th>Review</th>
                         <th>Rating</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
+                <tbody>
                     {% for entry in entries %}
+
                     <tr>
                         <td><strong>{{ entry.job_title }}</strong></td>
                         <td>{{ entry.job_description }}</td>
