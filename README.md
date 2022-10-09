@@ -1,4 +1,4 @@
-# NC State Jobs Review System
+ # NC State Jobs Review System
 
 This is a Flask App for NCSU Campus Job Review System. Here students from NCSU can register themselves and search for vacancies at various On-Campus stores. 
 
@@ -24,6 +24,8 @@ You can refer [INSTALL.md](https://github.com/ashishjoshi2605/ncsu-campus-jobs-r
 ## Contribution Code of Conduct
 
 The rules listed below are to be followed by the ones who will be contributing to the code in the repository:
+  
+  - All the branches used to merge any code into the main branch should start with "KAPSS-".
   - Atleast one review/approval is required from any other contributors of the project to merge a commit to the main branch.
   - It is recommended to delete the branch as soon as it is merged to the main branch to avoid stale branches in the repository.
   - It is encouraged to add name tags such as "feature-" or "patch-" in the branches if it is used to add code-patches or features in the project.
