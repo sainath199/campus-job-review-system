@@ -1,6 +1,7 @@
 from app import db
 
 class Reviews(db.Model):
+    """Model which stores the information of the reviews submitted"""
     id = db.Column(db.Integer, primary_key=True)
     department = db.Column(db.String(64), index=True, nullable=False)
     locations = db.Column(db.String(120), index=True, nullable=False)
