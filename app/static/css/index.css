@@ -12,10 +12,13 @@ body{
 	background-position: top;
 	background-size:cover;
 	background-attachment: fixed;
-	background-repeat: no-repeat, y-repeat;
+	background-repeat: no-repeat;
+}
+.addPadding{
+	padding-top: 75px;	
 }
 .banner2{
-	height: 100%;
+	height: 100vh;
 	width: 100%;
 	background:url('overlay.png'),url('WolfPlaza.jpg');
 	background-position: top;
