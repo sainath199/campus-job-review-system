@@ -2,6 +2,7 @@
 
 This is a Flask App for NCSU Campus Job Review System. Here students from NCSU can register themselves and search for vacancies at various On-Campus stores. 
 
+<a href="https://zenodo.org/badge/latestdoi/545210740"><img src="https://zenodo.org/badge/545210740.svg" alt="DOI"></a>
 <a href="https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/graphs/contributors" alt="Contributors"><img src="https://img.shields.io/github/contributors/ashishjoshi2605/ncsu-campus-jobs-review-system" /></a>
 <a href="https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system" alt="Repo Size"><img src="https://img.shields.io/github/repo-size/ashishjoshi2605/ncsu-campus-jobs-review-system" /></a>
 <a href="https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/LICENSE" alt="License"><img src="https://img.shields.io/github/license/ashishjoshi2605/ncsu-campus-jobs-review-system" /></a>
