@@ -10,7 +10,7 @@ body{
 	width: 100%;
 	background:url('overlay.png'),url('WolfPlaza.jpg');
 	background-position: top;
-	background-size:cover;
+	background-size: cover;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 }
@@ -28,16 +28,16 @@ body{
 	background-repeat: no-repeat;
 }
 .banner .navbar{
-	margin-top:4%;
+	margin-top:0%;
 }
 .banner .navbar-brand{
 	color: #fff;
 	font-size:1.8em;
 	font-weight: 700;
-	margin-left: 10%;
+	margin-left: 0%;
 }
 .banner .nav{
-	margin-right:10%; 
+	margin-right:0%;
 }
 .banner .nav li a{
 	color:#aaa;
@@ -64,19 +64,19 @@ body{
 	transform: translateX(-50%);
 	color: #fff;
 	/* background: #e91d43; */
-	padding:10px 20px; 
+	padding:10px 20px;
 	font-size: 2em;
 	font-weight: 600;	
 }
 
 .main {
-  margin-top: 150px; /* Add a top margin to avoid content overlay */
+  margin-top: 80px; /* Add a top margin to avoid content overlay */
 }
 
 .navbar {
   overflow: hidden;
-  /*background-color: #333;*/
-  position: fixed; /* Set the navbar to fixed position */
+  background-color: #333;
+  position: sticky; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 }
