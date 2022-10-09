@@ -11,8 +11,19 @@ def review():
 
 @app.route('/pageContent')
 def page_content():
-    entries = Reviews.query.all()
-    return render_template('page_content.html', entries=entries)
+        entries = Reviews.query.all()
+        return render_template('page_content.html', entries=entries)
+
+@app.route('/pageContentPost', methods=['POST'])
+def page_content_post():
+        if request.method == 'POST':
+            form = request.form
+            search_title = form.get('search')
+            if search_title.strip() == '':
+                entries = Reviews.query.all()
+            else:
+                entries = Reviews.query.filter_by(job_title=search_title)
+            return render_template('page_content.html', entries=entries)
 
 @app.route('/')
 @app.route('/home')
