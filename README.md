@@ -8,6 +8,7 @@ This is a Flask App for NCSU Campus Job Review System. Here students from NCSU c
 <a href="https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/LICENSE" alt="License"><img src="https://img.shields.io/github/license/ashishjoshi2605/ncsu-campus-jobs-review-system" /></a>
 <a href="https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/issues" alt="Open Issues"><img src="https://img.shields.io/github/issues-raw/ashishjoshi2605/ncsu-campus-jobs-review-system" /></a>
 <a href="https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/actions" alt="Build Status"><img src="https://img.shields.io/github/workflow/status/ashishjoshi2605/ncsu-campus-jobs-review-system/Build%20main" /></a>
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/ashishjoshi2605/ncsu-campus-jobs-review-system/website?color=magenta&label=Documentation">
 
 ## Pre-requisites
 To run these scripts, you will require Python installed on your PC. Please visit [Python Installers](https://www.python.org/downloads/) to download the lastest python version. Apart from that, other requirements can be installed with the help of requirements.txt.
