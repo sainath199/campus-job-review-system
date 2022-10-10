@@ -51,8 +51,9 @@ def add():
         benefits = form.get('benefits')
         review = form.get('review')
         rating = form.get('rating')
+        recommendation = form.get('recommendation')
 
-        entry = Reviews(job_title = title, job_description = description, department = department, locations = locations, hourly_pay = hourly_pay, benefits = benefits, review=review, rating=rating)
+        entry = Reviews(job_title = title, job_description = description, department = department, locations = locations, hourly_pay = hourly_pay, benefits = benefits, review=review, rating=rating,recommendation = recommendation)
         db.session.add(entry)
         db.session.commit()
         return redirect('/')
