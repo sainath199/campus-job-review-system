@@ -37,3 +37,10 @@ The rules listed below are to be followed by the ones who will be contributing t
   - It is recommended to delete the branch as soon as it is merged to the main branch to avoid stale branches in the repository.
   - It is encouraged to add name tags such as "feature-" or "patch-" in the branches if it is used to add code-patches or features in the project.
   
+### Code Coverage Screenshot
+
+![alt text](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/karan-47-patch-1/Data/codecov.png)
+
+### Slack Channel Screenshot
+
+![alt text](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/karan-47-patch-1/Data/slack_channel.png)
