@@ -27,9 +27,9 @@ jobs:
       # ADJUST THIS: build your documentation into docs/.
       # We use a custom build script for pdoc itself, ideally you just run `pdoc -o docs/ ...` here.
       - run: | 
-            pdoc ./app/routes.py 
-            pdoc ./app/config.py 
-            pdoc ./app/models.py
+            pdoc ./app/routes.py -o ./docs
+            pdoc ./app/config.py -o ./docs
+            pdoc ./app/models.py -o ./docs
       
 
       - uses: actions/upload-pages-artifact@v1
