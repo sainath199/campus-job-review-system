@@ -11,3 +11,4 @@ class Reviews(db.Model):
     benefits = db.Column(db.String(120), index=True, nullable=False)
     review = db.Column(db.String(120), index=True, nullable=False)
     rating = db.Column(db.Integer, nullable=False)
+    recommendation = db.Column(db.Integer, nullable=False)
