@@ -28,6 +28,9 @@ If this is not the case, then you need to download python installer package from
 
 You can refer [INSTALL.md](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/INSTALL.md) for the complete installation steps based on your OS.
 
+## Poster
+![alt text](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/app/static/Poster.jpg)
+
 ## Contribution Code of Conduct
 
 The rules listed below are to be followed by the ones who will be contributing to the code in the repository:
