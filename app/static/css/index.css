@@ -80,3 +80,7 @@ body{
   top: 0;
   width: 100%;
 }
+
+.table-responsive {
+    max-height: 400px;
+}

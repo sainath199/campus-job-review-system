@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect
 from app import app, db
-from app.models import Reviews
+from app.models import Reviews, Vacancies
 
 @app.route('/review')
 def review():
@@ -11,11 +11,21 @@ def review():
     return render_template('review-page.html', entries=entries)
 
 
+@app.route('/dashboard')
+def getVacantJobs():
+    """
+        An API for the users to see all the available vacancies and their details
+    """
+    vacancies = Vacancies.query.all()
+    return render_template('dashboard.html', vacancies=vacancies)
+
+
 @app.route('/pageContent')
 def page_content():
     """An API for the user to view all the reviews entered"""
     entries = Reviews.query.all()
     return render_template('page_content.html', entries=entries)
+
 
 @app.route('/pageContentPost', methods=['POST'])
 def page_content_post():
@@ -29,9 +39,9 @@ def page_content_post():
             entries = Reviews.query.filter_by(job_title=search_title)
         return render_template('page_content.html', entries=entries)
 
+
 @app.route('/')
 @app.route('/home')
-
 def home():
     """An API for the user to be able to access the homepage through the navbar"""
     entries = Reviews.query.all()
@@ -53,7 +63,9 @@ def add():
         rating = form.get('rating')
         recommendation = form.get('recommendation')
 
-        entry = Reviews(job_title = title, job_description = description, department = department, locations = locations, hourly_pay = hourly_pay, benefits = benefits, review=review, rating=rating,recommendation = recommendation)
+        entry = Reviews(job_title=title, job_description=description, department=department, locations=locations,
+                        hourly_pay=hourly_pay, benefits=benefits, review=review, rating=rating,
+                        recommendation=recommendation)
         db.session.add(entry)
         db.session.commit()
         return redirect('/')
