@@ -28,7 +28,7 @@
                     <a class="nav-link" href="/">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">PORTFOLIO</a>
+                    <a class="nav-link" href="/dashboard">DASHBOARD</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">ABOUT</a>
@@ -36,6 +36,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">CONTACT</a>
                 </li>
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">LOGOUT</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">LOGIN</a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
         </div>
