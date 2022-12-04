@@ -23,6 +23,7 @@ class Reviews(db.Model):
     recommendation = db.Column(db.Integer, nullable=False)
 
 class Vacancies(db.Model):
+
     """Model which stores the information of the reviews submitted"""
     vacancyId = db.Column(db.Integer, primary_key=True)
     jobTitle = db.Column(db.String(500), index=True, nullable=False)
@@ -30,6 +31,15 @@ class Vacancies(db.Model):
     jobLocation = db.Column(db.String(500), index=True, nullable=False)
     jobPayRate = db.Column(db.String(120), index=True, nullable=False)
     maxHoursAllowed = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, jobTitle, jobDescription, jobLocation, jobPayRate, maxHoursAllowed):
+        self.jobTitle = jobTitle
+        self.jobDescription = jobDescription
+        self.jobLocation = jobLocation
+        self.jobPayRate = jobPayRate
+        self.maxHoursAllowed = maxHoursAllowed
+
+
 class RegistrationForm(FlaskForm):
     username = StringField('Username',
                            validators=[DataRequired(), Length(min=2, max=20)])
@@ -40,6 +50,7 @@ class RegistrationForm(FlaskForm):
                                      validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
+
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
@@ -49,16 +60,10 @@ class User(db.Model,UserMixin):
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
+
 class LoginForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
-
-    def __init__(self, jobTitle, jobDescription, jobLocation, jobPayRate, maxHoursAllowed):
-        self.jobTitle = jobTitle
-        self.jobDescription = jobDescription
-        self.jobLocation = jobLocation
-        self.jobPayRate = jobPayRate
-        self.maxHoursAllowed = maxHoursAllowed
