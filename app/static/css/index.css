@@ -84,3 +84,7 @@ body{
 .table-responsive {
     max-height: 400px;
 }
+
+#deleteModalLabel{
+	color: #444444;
+}

@@ -1,5 +1,5 @@
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewreport" content="width=device-width, initial-scale=1.0">
@@ -13,49 +13,63 @@
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='/css/index.css')}}" />
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     </head>
     <body>
 
-    <div class="container-fluid banner">
-        <div class="row">
+        <div class="container-fluid banner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar">
+                        <nav class="navbar navbar-sm">
+                            <div class="navbar-brand">NC State Campus Jobs</div>
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">HOME</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/dashboard">JOB VACANCIES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">ABOUT</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">CONTACT</a>
+                                </li>
+                                {% if current_user.is_authenticated %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/account">ACCOUNT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/logout">LOGOUT</a>
+                                    </li>
+                                {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/login">LOGIN</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
 
-    <div class="col-md-12">
-        <div class="navbar">
-        <nav class="navbar navbar-sm">
-            <div class="navbar-brand">NC State Campus Jobs</div>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">DASHBOARD</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT</a>
-                </li>
-                {% if current_user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">LOGOUT</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">LOGIN</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </nav>
+                    <div class="main">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">
+                                {{ message }}
+                                </div>
+                            {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="main">
-            {% block content %}{% endblock %}
-        </div>
-        
-    </div>
-        </div>
-    </div>
-
-        </body>
-    </html>
+    </body>
+</html>
