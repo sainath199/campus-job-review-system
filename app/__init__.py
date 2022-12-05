@@ -10,7 +10,9 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 bcrypt=Bcrypt(app)
 login_manager=LoginManager(app)
-migrate = Migrate(app, db)
+login_manager.login_view = 'login'
+login_manager.login_message_category = 'info'
+migrate = Migrate(app, db, render_as_batch=True)
 
 @app.before_first_request
 def create_table():

@@ -1,19 +1,30 @@
-from flask import render_template, request, redirect,flash, url_for
+from flask import render_template, request, redirect, flash, url_for
 from app import app, db, bcrypt
-from app.models import Reviews, Vacancies,User
-from app.forms import RegistrationForm, LoginForm
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-from flask_login import login_user,current_user,logout_user
+from app.models import Reviews, Vacancies, User
+from app.forms import RegistrationForm, LoginForm, ReviewForm
+from flask_login import login_user, current_user, logout_user, login_required
 
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
-@app.route('/review')
-def review():
-    """
-    An API for the user review page, which helps the user to add reviews
-    """
+
+@app.route('/review/all')
+def view_reviews():
+    """An API for the user to view all the reviews entered"""
     entries = Reviews.query.all()
-    return render_template('review-page.html', entries=entries)
+    return render_template('view_reviews.html', entries=entries)
+
+@app.route('/review/new', methods=['GET', 'POST'])
+@login_required
+def new_review():
+    form = ReviewForm()
+    if form.validate_on_submit():
+        review = Reviews(job_title=form.job_title.data, job_description=form.job_description.data, department=form.department.data, locations=form.locations.data,
+                        hourly_pay=form.hourly_pay.data, benefits=form.benefits.data, review=form.review.data, rating=form.rating.data,
+                        recommendation=form.recommendation.data, author=current_user)
+        db.session.add(review)
+        db.session.commit()
+        flash('Review submitted successfully!', 'success')
+        return redirect(url_for('view_reviews'))
+    return render_template('create_review.html', title='New Review', form=form)
 
 
 @app.route('/dashboard')
@@ -23,14 +34,6 @@ def getVacantJobs():
     """
     vacancies = Vacancies.query.all()
     return render_template('dashboard.html', vacancies=vacancies)
-
-
-@app.route('/pageContent')
-def page_content():
-    """An API for the user to view all the reviews entered"""
-    entries = Reviews.query.all()
-    return render_template('page_content.html', entries=entries)
-
 
 @app.route('/pageContentPost', methods=['POST'])
 def page_content_post():
@@ -42,7 +45,7 @@ def page_content_post():
             entries = Reviews.query.all()
         else:
             entries = Reviews.query.filter_by(job_title=search_title)
-        return render_template('page_content.html', entries=entries)
+        return render_template('view_reviews.html', entries=entries)
 
 
 @app.route('/')
@@ -51,29 +54,6 @@ def home():
     """An API for the user to be able to access the homepage through the navbar"""
     entries = Reviews.query.all()
     return render_template('index.html', entries=entries)
-
-
-@app.route('/add', methods=['POST'])
-def add():
-    """An API to help users add their reviews and store it in the database"""
-    if request.method == 'POST':
-        form = request.form
-        title = form.get('job_title')
-        description = form.get('job_description')
-        department = form.get('department')
-        locations = form.get('locations')
-        hourly_pay = form.get('hourly_pay')
-        benefits = form.get('benefits')
-        review = form.get('review')
-        rating = form.get('rating')
-        recommendation = form.get('recommendation')
-
-        entry = Reviews(job_title=title, job_description=description, department=department, locations=locations,
-                        hourly_pay=hourly_pay, benefits=benefits, review=review, rating=rating,
-                        recommendation=recommendation)
-        db.session.add(entry)
-        db.session.commit()
-        return redirect('/')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -85,7 +65,7 @@ def register():
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash('Your account has been created! You are now able to log in', 'success')
+        flash('Account created successfully! Please log in with your credentials.', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
@@ -102,13 +82,20 @@ def login():
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
+            flash('Login Unsuccessful. Please enter correct email and password.', 'danger')
     return render_template('login.html', title='Login', form=form)
 
 @app.route("/logout")
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
+
+@app.route("/account")
+@login_required
+def account():
+    return render_template('account.html', title='Account')
+
 # @app.route('/update/<int:id>')
 # def updateRoute(id):
 #     if not id or id != 0:
