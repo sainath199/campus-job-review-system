@@ -35,8 +35,13 @@ def test_review_route():
     response = app.test_client().get('/pageContent')
     assert response.status_code == 200
 
+def test_dashboard_route():
+    response = app.test_client().get('/dashboard')
+    assert response.status_code == 200
+
 test_index_route()
 test_review_route()
 test_add_review_route()
 test_add_post_route()
 test_page_content_route()
+test_dashboard_route()
