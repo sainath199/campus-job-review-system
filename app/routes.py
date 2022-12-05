@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, flash, url_for
+from flask import render_template, request, redirect, flash, url_for, abort
 from app import app, db, bcrypt
 from app.models import Reviews, Vacancies, User
 from app.forms import RegistrationForm, LoginForm, ReviewForm
@@ -24,8 +24,44 @@ def new_review():
         db.session.commit()
         flash('Review submitted successfully!', 'success')
         return redirect(url_for('view_reviews'))
-    return render_template('create_review.html', title='New Review', form=form)
+    return render_template('create_review.html', title='New Review', form=form, legend='Add your Review')
 
+@app.route("/review/<int:review_id>")
+def review(review_id):
+    review = Reviews.query.get_or_404(review_id)
+    return render_template('review.html', review=review)
+
+@app.route("/review/<int:review_id>/update", methods=['GET', 'POST'])
+@login_required
+def update_review(review_id):
+    review = Reviews.query.get_or_404(review_id)
+    if review.author != current_user:
+        abort(403)
+    form = ReviewForm()
+    if form.validate_on_submit():
+        review.job_title=form.job_title.data
+        review.job_description=form.job_description.data
+        review.department=form.department.data
+        review.locations=form.locations.data
+        review.hourly_pay=form.hourly_pay.data
+        review.benefits=form.benefits.data
+        review.review=form.review.data
+        review.rating=form.rating.data
+        review.recommendation=form.recommendation.data
+        db.session.commit()
+        flash('Your review has been updated!', 'success')
+        return redirect(url_for('view_reviews'))
+    elif request.method == 'GET':
+        form.job_title.data=review.job_title
+        form.job_description.data=review.job_description
+        form.department.data=review.department
+        form.locations.data=review.locations
+        form.hourly_pay.data=review.hourly_pay
+        form.benefits.data=review.benefits
+        form.review.data=review.review
+        form.rating.data=review.rating
+        form.recommendation.data=review.recommendation
+    return render_template('create_review.html', title='Update Review', form=form, legend='Update Review')
 
 @app.route('/dashboard')
 def getVacantJobs():
