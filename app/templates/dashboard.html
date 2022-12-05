@@ -1,49 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewreport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>
-        NCSU Campus Job
-    </title>
-    <link rel="stylesheet" type="text/css"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='/css/index.css')}}"/>
-</head>
-<body scroll="no" style="overflow: hidden">
-<div class="container-fluid banner">
-    <div class="row">
-        <div class="col-md-12">
-            <nav class="navbar navbar-md">
-                <div class="navbar-brand">NC State Campus Jobs</div>
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/dashboard">DASHBOARD</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">ABOUT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACT</a>
-                    </li>
-                    {% if current_user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/logout">LOGOUT</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">LOGIN</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </div>
+{% extends "base.html" %}
+{% block content %}
+
         <div class="container-fluid banner2 text-center">
             <p class="text-center bold"><h1>Part Time Job Listings</h1></p>
             <div class="table-responsive justify-content-between">
@@ -73,6 +30,4 @@
                 </table>
             </div>
         </div>
-    </div>
-</body>
-</html>
+{% endblock %}

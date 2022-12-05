@@ -1,8 +1,4 @@
 from app import db, login_manager
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
-from datetime import datetime
 from flask_login import UserMixin
 
 @login_manager.user_loader
@@ -16,11 +12,12 @@ class Reviews(db.Model):
     locations = db.Column(db.String(120), index=True, nullable=False)
     job_title = db.Column(db.String(64), index=True, nullable=False)
     job_description = db.Column(db.String(120), index=True, nullable=False)
-    hourly_pay = db.Column(db.Integer, nullable=False)
+    hourly_pay = db.Column(db.String(10), nullable=False)
     benefits = db.Column(db.String(120), index=True, nullable=False)
     review = db.Column(db.String(120), index=True, nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     recommendation = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class Vacancies(db.Model):
 
