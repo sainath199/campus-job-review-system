@@ -3,8 +3,8 @@
 
 |Notes|Self Assessment|Evidence|
 |-----|-|---------|
-|Video1|3|     [Demo video](https://drive.google.com/file/d/1HqvInvVd4BRZCU7ygsuMz6vutRqEJ1RU/view?usp=sharing) (Also in README.md)        |
-|Bonus: Xfold improvement|3||
+|Video1|3|     [Demo video](https://drive.google.com/file/d/1U5LNl1cE1eTF9zviGfF5Q9E83D4w1NIV/view?usp=share_link) (Also in README.md)        |
+|Bonus: Xfold improvement|3|[Hosted website](http://44.204.178.112:5000/) improved the throughput and number of concurrent users|
 |Docs: what: point descriptions of each class/function (in isolation)|3|	In GitHub (before each class and function)|
 |Use of style checkers|3|Using [Pycodestyle](https://pypi.org/project/pep8/)|
 |Use of code formatters|3|Using [Black](https://black.readthedocs.io/en/stable/). Evidence of PEP8 style in GitHub python files|
@@ -16,10 +16,10 @@
 |Number of commits: by different people|3|[GitHub Link](https://github.com/akshat22/campus-job-review-system/pulse)|
 |Issues reports|3|[Issues](https://github.com/akshat22/campus-job-review-system/issues)|
 |DOI badge|3|[DOI Badge](https://zenodo.org/badge/latestdoi/571841941)|
-|Docs: doco generated, format not ugly|3||
+|Docs: doco generated, format not ugly|3|Generated using [pdoc](/docs/)|
 |Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z|3| In README.md|
 |Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3|In README.md|
-|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|3||
+|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|3|[Demo video](https://drive.google.com/file/d/1U5LNl1cE1eTF9zviGfF5Q9E83D4w1NIV/view?usp=share_link)|
 |Use of version control tools|3|Using GitHub|
 |Test cases exist|3|[Tests](https://github.com/akshat22/campus-job-review-system/tree/main/tests)|
 |Test cases are routinely executed|3|[GitHub actions](https://github.com/akshat22/campus-job-review-system/actions)|
