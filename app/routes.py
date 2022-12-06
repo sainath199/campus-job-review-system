@@ -49,7 +49,7 @@ def logout():
     logout_user()
     flash('Logged out successfully!', 'success')
     return redirect(url_for('home'))
-    
+
 @app.route('/review/all')
 def view_reviews():
     """An API for the user to view all the reviews entered"""
@@ -126,17 +126,17 @@ def getVacantJobs():
     vacancies = Vacancies.query.all()
     return render_template('dashboard.html', vacancies=vacancies)
 
-@app.route('/pageContentPost', methods=['POST'])
-def page_content_post():
-    """An API for the user to view specific reviews depending on the job title"""
-    if request.method == 'POST':
-        form = request.form
-        search_title = form.get('search')
-        if search_title.strip() == '':
-            entries = Reviews.query.all()
-        else:
-            entries = Reviews.query.filter_by(job_title=search_title)
-        return render_template('view_reviews.html', entries=entries)
+# @app.route('/pageContentPost', methods=['POST'])
+# def page_content_post():
+#     """An API for the user to view specific reviews depending on the job title"""
+#     if request.method == 'POST':
+#         form = request.form
+#         search_title = form.get('search')
+#         if search_title.strip() == '':
+#             entries = Reviews.query.all()
+#         else:
+#             entries = Reviews.query.filter_by(job_title=search_title)
+#         return render_template('view_reviews.html', entries=entries)
 
 @app.route("/account")
 @login_required
