@@ -47,6 +47,6 @@ The rules listed below are to be followed by the ones who will be contributing t
 
 ![alt text](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/Data/codecov.png)
 
-### Slack Channel Screenshot
+### Chat Channel Screenshot
 
-![alt text](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/Data/slack_channel.png)
+![alt text](https://github.com/akshat22/campus-job-review-system/blob/main/Data/chatCommunication.jpeg)
