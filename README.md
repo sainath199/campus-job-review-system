@@ -45,7 +45,7 @@ The rules listed below are to be followed by the ones who will be contributing t
   
 ### Code Coverage Screenshot
 
-![alt text](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/Data/codecov.png)
+![alt text](https://github.com/akshat22/campus-job-review-system/blob/main/Data/code_coverage.jpeg)
 
 ### Chat Channel Screenshot
 
