@@ -52,7 +52,7 @@ def test_add_review_route_post():
     "rating":"2",
     "recommendation":"2",
     })
-    assert response.status_code == 302
+    assert response.status_code == 200
 
 def test_view_review():
     response1 = app.test_client().get('/review/5')
@@ -104,4 +104,4 @@ def test_dashboard_route():
 
 def test_account_route():
     response = app.test_client().get('/account')
-    assert response.status_code == 302
+    assert response.status_code == 200
