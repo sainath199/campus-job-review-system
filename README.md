@@ -7,7 +7,7 @@
 alt="License" src="https://img.shields.io/github/license/akshat22/campus-job-review-system"></a>
 [![GitHub Release](https://img.shields.io/github/release/akshat22/campus-job-review-system.svg)](https://github.com/akshat22/campus-job-review-system/releases)
 [![code-coverage](https://img.shields.io/badge/code--coverage-62%25-green)](https://drive.google.com/file/d/1oO6JZ_l4851oo6Akqr53Kv9ANjqwhcnr/view?usp=share_link)
-[![Build](https://github.com/akshat22/campus-job-review-system/actions/workflows/python-app.yml/badge.svg)](https://github.com/akshat22/campus-job-review-system/actions/workflows/python-app.yml)
+[![Build](https://github.com/akshat22/campus-job-review-system/actions/workflows/check-commits.yml/badge.svg)](https://github.com/akshat22/campus-job-review-system/actions/workflows/check-commits.yml)
 [![GitHub contributors](https://img.shields.io/github/contributors/akshat22/campus-job-review-system)](https://github.com/akshat22/campus-job-review-system/graphs/contributors)
 [![Open Issues](https://img.shields.io/github/issues/akshat22/campus-job-review-system)](https://github.com/akshat22/campus-job-review-system/issues)
 ![Closed issues](https://img.shields.io/github/issues-closed/akshat22/campus-job-review-system?color=bright-green)
