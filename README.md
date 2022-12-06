@@ -32,6 +32,11 @@ If this is not the case, then you need to download python installer package from
 
 You can refer [INSTALL.md](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/INSTALL.md) for the complete installation steps based on your OS.
 
+
+## Demo Video
+https://user-images.githubusercontent.com/50794731/205819285-9d4875ed-172e-427c-9c0c-591957081a78.mp4
+
+
 ## Poster for Stage 1
 ![alt text](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/app/static/Poster.jpg)
 
