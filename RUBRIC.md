@@ -23,7 +23,7 @@
 |Use of version control tools|3|Using GitHub|
 |Test cases exist|3|[Tests](https://github.com/akshat22/campus-job-review-system/tree/main/tests)|
 |Test cases are routinely executed|3|[GitHub actions](https://github.com/akshat22/campus-job-review-system/actions)|
-|The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|[CONTRIBUTING.MD](CONTRIBUTING.md)|
+|The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|[CONTRIBUTING.MD](https://github.com/akshat22/campus-job-review-system#contribution-code-of-conduct)|
 |Issues are discussed before they are closed|3|[GitHub Link](https://github.com/akshat22/campus-job-review-system/issues?q=is%3Aissue+is%3Aclosed)|
 |Chat channel: exists|3|[WhatsApp Group](https://drive.google.com/file/d/1KBVUrJFzkLkdwxDof1RLWWovKQPcfohr/view?usp=share_link) and [Discord Server](https://drive.google.com/file/d/1hJyumk-VMGdoJKOBiQ9zA6T7Mkp2MPPC/view?usp=sharing) for group discussions|
 |Test cases: a large proportion of the issues related to handling failing cases|3|[GitHub Link](https://github.com/akshat22/campus-job-review-system/issues?q=is%3Aissue+is%3Aclosed)|
