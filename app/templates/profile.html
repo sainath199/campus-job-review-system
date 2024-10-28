@@ -1,0 +1,57 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+</head>
+<body>
+    <h1>Your Profile Details</h1>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="alert alert-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('profile') }}" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.username.label }} {{ form.username(size=32) }}
+        </div>
+        <div>
+            {{ form.email.label }} {{ form.email(size=32) }}
+        </div>
+        <div>
+            {{ form.contact_info.label }} {{ form.contact_info(size=32) }}
+        </div>
+        <div>
+            {{ form.address.label }} {{ form.address(size=32) }}
+        </div>
+        
+        <div>
+            <label for="resume">Upload Resume:</label>
+            <input type="file" name="resume">
+        </div>
+        
+        <button type="submit">Update Profile</button>
+    </form>
+
+    <h2>Your Resume</h2>
+    {% if resume_url %}
+        <a href="{{ resume_url }}" target="_blank">View Your Resume</a>
+    {% else %}
+        <p>You have not uploaded a resume yet.</p>
+    {% endif %}
+
+    <h2>Actions</h2>
+    <a href="{{ url_for('upload_resume') }}">Upload Resume</a><br>
+    <br><br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
