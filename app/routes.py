@@ -1,8 +1,9 @@
 from flask import render_template, request, redirect, flash, url_for, abort
 from app import app, db, bcrypt
 from app.models import Reviews, Vacancies, User
-from app.forms import RegistrationForm, LoginForm, ReviewForm
+from app.forms import RegistrationForm, LoginForm, ReviewForm, JobPostingForm
 from flask_login import login_user, current_user, logout_user, login_required
+from functools import wraps
 
 app.config["SECRET_KEY"] = "5791628bb0b13ce0c676dfde280ba245"
 
@@ -14,6 +15,13 @@ def home():
     entries = Reviews.query.all()
     return render_template("index.html", entries=entries)
 
+def admin_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_admin:
+            abort(403)  # Forbidden access
+        return f(*args, **kwargs)
+    return decorated_function
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -21,11 +29,12 @@ def register():
         return redirect(url_for("home"))
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode(
-            "utf-8"
-        )
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode("utf-8")
         user = User(
-            username=form.username.data, email=form.email.data, password=hashed_password
+            username=form.username.data, 
+            email=form.email.data, 
+            password=hashed_password,
+            is_admin=form.is_admin.data
         )
         db.session.add(user)
         db.session.commit()
@@ -36,6 +45,58 @@ def register():
         return redirect(url_for("login"))
     return render_template("register.html", title="Register", form=form)
 
+@app.route("/review/<int:review_id>/delete", methods=["POST"])
+@login_required
+def delete_review(review_id):
+    review = Reviews.query.get_or_404(review_id)
+
+    if review.user_id == current_user.id or current_user.is_admin:    
+        db.session.delete(review)
+        db.session.commit()
+        flash("The review has been deleted!", "success")
+        return redirect(url_for("view_reviews"))
+    else:
+        flash('You cannot delete this review. It was not created by you.', 'danger')
+        return redirect(url_for('view_reviews'))
+
+@app.route('/delete_user/<int:user_id>', methods=['POST'])
+@login_required
+def delete_user(user_id):
+    user = User.query.get_or_404(user_id)
+
+    db.session.delete(user)
+    db.session.commit()
+    flash('User has been deleted successfully.', 'success')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/toggle_admin/<int:user_id>', methods=['POST'])
+@login_required
+def toggle_admin(user_id):
+    user = User.query.get_or_404(user_id)
+    user.is_admin = not user.is_admin
+    db.session.commit()
+    flash('User admin status has been updated.', 'success')
+    return redirect(url_for('admin_dashboard')) 
+
+@app.route("/admin/dashboard")
+@login_required
+@admin_required
+def admin_dashboard():
+    # if not current_user.is_admin:
+    #     flash('Access denied. You do not have permission to view this page.', 'danger')
+    #     return redirect(url_for('index.html'))
+    reviews = Reviews.query.all()
+    users = User.query.all()
+    jobs = Vacancies.query.all() 
+    return render_template('admin_dashboard.html', reviews=reviews, users=users, jobs=jobs)
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -55,7 +116,7 @@ def login():
     return render_template("login.html", title="Login", form=form)
 
 
-@app.route("/logout")
+@app.route("/logout", methods=["GET", "POST"])
 def logout():
     logout_user()
     flash("Logged out successfully!", "success")
@@ -68,6 +129,39 @@ def view_reviews():
     entries = Reviews.query.all()
     return render_template("view_reviews.html", entries=entries)
 
+@app.route("/post-job", methods=["GET", "POST"])
+def post_job():
+    form = JobPostingForm()
+    if form.validate_on_submit():
+        print("Form validated successfully.")
+        new_job = Vacancies(
+            jobTitle=form.jobTitle.data,
+            jobDescription=form.jobDescription.data,
+            jobLocation=form.jobLocation.data,
+            jobPayRate=float(form.jobPayRate.data),
+            maxHoursAllowed=form.maxHoursAllowed.data,
+        )
+        
+        db.session.add(new_job)
+        db.session.commit()
+        flash(
+            "Job posted successfully!", "success"
+        )
+        return redirect(url_for("getVacantJobs"))
+    return render_template("post_job.html", form=form)
+
+@app.route('/delete-job/<int:job_id>', methods=['POST'])
+@login_required
+def delete_job(job_id):
+    # Fetch and delete the job based on job_id
+    job = Vacancies.query.get(job_id)
+    if job:
+        db.session.delete(job)
+        db.session.commit()
+        flash("Job deleted successfully!", "success")
+    else:
+        flash("Job not found.", "danger")
+    return redirect(url_for('getVacantJobs'))
 
 @app.route("/review/new", methods=["GET", "POST"])
 @login_required
@@ -136,16 +230,6 @@ def update_review(review_id):
     )
 
 
-@app.route("/review/<int:review_id>/delete", methods=["POST"])
-@login_required
-def delete_review(review_id):
-    review = Reviews.query.get_or_404(review_id)
-    if review.author != current_user:
-        abort(403)
-    db.session.delete(review)
-    db.session.commit()
-    flash("Your review has been deleted!", "success")
-    return redirect(url_for("view_reviews"))
 
 
 @app.route("/dashboard")

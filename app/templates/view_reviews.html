@@ -29,6 +29,9 @@
         <th>Rating</th>
         <th>Recommendation</th>
         <th>Reviewed By</th>
+        {% if current_user.is_admin %}
+        <th>Action</th>
+        {% endif %}
       </tr>
     </thead>
     <tbody>
@@ -53,21 +56,13 @@
         <td>{{ entry.rating }}</td>
         <td>{{ entry.recommendation }}</td>
         <td>{{ entry.author.username }}</td>
-
-        <!-- <td>
-                            <a class="{{ 'btn btn-success' if entry.status else 'btn btn-dark'}}"
-                               href="/turn/{{ entry.id }}">
-                                Turn Status
-                            </a>
-                            <a class="btn btn-danger"
-                               href="/delete/{{ entry.id }}">
-                                Delete
-                            </a>
-                            <a class="btn btn-info"
-                               href="/update/{{ entry.id }}">
-                                Edit
-                            </a>
-                        </td> -->
+        {% if current_user.is_admin %}
+        <td>
+          <form action="{{ url_for('delete_review', review_id=entry.id) }}" method="POST">
+              <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+      </td>
+        {% endif %}
       </tr>
       {% endfor %}
     </tbody>

@@ -7,20 +7,25 @@ from wtforms import (
     IntegerField,
     RadioField,
     TextAreaField,
+    DecimalField
 )
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from app.models import User
 
+class JobPostingForm(FlaskForm):
+    jobTitle = StringField("Job Title", validators=[DataRequired(), Length(min=2, max=100)])
+    jobDescription = TextAreaField("Job Description", validators=[DataRequired()])
+    jobPayRate = DecimalField("Pay Rate", validators=[DataRequired()], places=2, rounding=None)
+    jobLocation = StringField("Location", validators=[Length(max=100)])
+    maxHoursAllowed = IntegerField("Maximum Working Hours Allowed")
+    submit = SubmitField("Post Job")
 
 class RegistrationForm(FlaskForm):
-    username = StringField(
-        "Username", validators=[DataRequired(), Length(min=2, max=20)]
-    )
+    username = StringField("Username", validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField("Email", validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators=[DataRequired()])
-    confirm_password = PasswordField(
-        "Confirm Password", validators=[DataRequired(), EqualTo("password")]
-    )
+    confirm_password = PasswordField("Confirm Password", validators=[DataRequired(), EqualTo("password")])
+    is_admin = BooleanField("Register as Admin")
     submit = SubmitField("Sign Up")
 
     def validate_username(self, username):
