@@ -1,27 +1,34 @@
-Installing Python
-==========================
+## Installation Guide
 
-Based on the Operating System of your PC, you can download and install Python's latest as well as older versions. Please find below instructions for the same based on your OS.
+## Prerequisites
+Before you begin, ensure you have met the following requirements:
 
+Operating System: Windows, macOS, Linux
+Web Browser: A modern web browser (e.g., Google Chrome, Mozilla Firefox, Safari)
 
-## Installing (for Windows)
+Install Python:
+1) Download the windows installer for the python version you desire from [Python Downloads](https://www.python.org/downloads/) Based on the Operating System of your PC, you can download and install Python's latest as well as older versions. Please find below instructions for the same based on your OS.
+2) Double-click on the downloaded file and follow the instructions as requested.
+3) Once completed, add python in the environment variables of your system settings to enable python compiling from your command line.
+4) You can verify if the Python installation is successful either through the command line or through the IDLE app that gets installed along with the installation. Search for the command prompt and type “python”. You can see that Python "version" is successfully installed.
 
-Download the windows installer for the python version you desire from [Python Downloads](https://www.python.org/downloads/)
+  To check python version, run this command in your CMD or Terminal:
+  
+  ```bash
+  python --version
+  ```
 
-Double-click on the downloaded file and follow the instructions as requested.
+## Follow these steps to install the project:
 
-Once completed, add python in the environment variables of your system settings to enable python compiling from your command line.
+### Installing (for Windows)
 
-You can verify if the Python installation is successful either through the command line or through the IDLE app that gets installed along with the installation. Search for the command prompt and type “python”. You can see that Python "version" is successfully installed.
+1. Clone the Repository
+Start by cloning the repository to your local machine. 
 
-To check python version, run this command in your CMD or Terminal:
-
-```bash
-python --version
-```
-```
+``` bash
 git clone https://github.com/Fall-2024-SE-Group/campus-job-review-system.git
 ```
+
 ```
 cd campus-job-review-system/
 ```
@@ -54,7 +61,7 @@ flask run
 ```
 
 
-## Mac OS
+### Mac OS
 
 MacOS comes with Python pre-installed. But it's Python Version 2.7, which is now deprecated (abandoned by the Python developer community).
 
