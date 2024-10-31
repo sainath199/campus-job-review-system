@@ -20,10 +20,10 @@ To check python version, run this command in your CMD or Terminal:
 python --version
 ```
 ```
-git clone https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system.git
+git clone https://https://github.com/Fall-2024-SE-Group/campus-job-review-system.git
 ```
 ```
-cd ncsu-campus-jobs-review-system/
+cd campus-job-review-system/
 ```
 ```
 python -m venv venv
