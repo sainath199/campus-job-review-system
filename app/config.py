@@ -11,7 +11,7 @@ class Config(object):
     ) or "sqlite:///" + os.path.join(basedir, "app.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # Upload folder for resumes
-    UPLOAD_FOLDER = os.path.join(basedir, 'static', 'resumes')
+    UPLOAD_FOLDER = os.path.join(basedir, 'app', 'static', 'resumes')
 
 
 

@@ -1,5 +1,6 @@
 from app import db, login_manager
 from flask_login import UserMixin
+from datetime import datetime
 
 
 @login_manager.user_loader
@@ -21,6 +22,15 @@ class Reviews(db.Model):
     rating = db.Column(db.Integer, nullable=False)
     recommendation = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+
+class UserProfile(db.Model):
+    """Model which stores additional profile information for users"""
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=True, nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    contact_info = db.Column(db.String(255), nullable=True)
+    address = db.Column(db.String(255), nullable=True)
 
 
 class Vacancies(db.Model):
@@ -50,9 +60,24 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default="default.jpg")
+    contact_info = db.Column(db.String(255), nullable=True)
+    address = db.Column(db.String(255), nullable=True)
+    resumes = db.relationship("Resume", backref="user", lazy=True)
+    resume_file_path = db.Column(db.String(300), nullable=True)
     password = db.Column(db.String(60), nullable=False)
     reviews = db.relationship("Reviews", backref="author", lazy=True)
     is_admin = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+
+class Resume(db.Model):
+    """Model which stores information about uploaded resumes"""
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    resume_file = db.Column(db.String(255), nullable=False)  # Path to uploaded resume file
+    upload_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def _repr_(self):
+        return f"Resume(User ID: '{self.user_id}', File: '{self.resume_file}', Uploaded: '{self.upload_date}')"

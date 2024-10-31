@@ -1,4 +1,6 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
+
 from wtforms import (
     StringField,
     PasswordField,
@@ -11,6 +13,15 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from app.models import User
+
+class UpdateAccountForm(FlaskForm):
+    """Form for updating account details."""
+    username = StringField('Name', validators=[DataRequired(), Length(min=2, max=50)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    contact_info = StringField("Contact Info", validators=[Length(max=255)])  # Add this line
+    submit = SubmitField('Update Account')
+    address=StringField("Address",validators=[Length(max=255)])
+
 
 class JobPostingForm(FlaskForm):
     jobTitle = StringField("Job Title", validators=[DataRequired(), Length(min=2, max=100)])
@@ -78,3 +89,15 @@ class ReviewForm(FlaskForm):
         ],
     )
     submit = SubmitField("Submit your review")
+
+class UserProfileForm(FlaskForm):
+    """Form for updating user profile information."""
+    name = StringField("Name", validators=[DataRequired(), Length(max=100)])
+    contact_info = StringField("Contact Info", validators=[Length(max=255)])
+    address = StringField("Address", validators=[Length(max=255)])
+    submit = SubmitField("Update Profile")
+
+class ResumeUploadForm(FlaskForm):
+    """Form for uploading resumes."""
+    resume= FileField("Upload Resume", validators=[DataRequired(), FileAllowed(['pdf', 'doc', 'docx'], 'Documents only!')])
+    submit = SubmitField("Upload Resume")
