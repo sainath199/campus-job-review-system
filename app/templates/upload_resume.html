@@ -1,37 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     <h1>Upload Your Resume</h1>
 
     <!-- Flash messages -->
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
+                {% for message in messages %}
+                    <li class="alert alert-info">{{ message }}</li>
+                {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}
 
     <form method="POST" action="{{ url_for('upload_resume') }}" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
-        <div>
-            {{ form.resume.label }} {{ form.resume() }}
+        <div class="form-group">
+            {{ form.resume.label }} {{ form.resume(class="form-control-file") }}
         </div>
         
-        <div>
-            {{ form.submit() }}
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
         </div>
     </form>
     
-    <a href="{{ url_for('profile') }}">Back to Profile</a>
-</body>
-</html>
-
-
+    <a href="{{ url_for('profile') }}" class="btn btn-secondary">Back to Profile</a>
+{% endblock %}
