@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Account</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     <h1>Your Account Details</h1>
 
     <!-- Flash messages block -->
@@ -23,24 +18,24 @@
     <form method="POST" action="{{ url_for('profile') }}" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         
-        <div>
+        <div class="form-group">
             <label for="username">Username:</label>
-            {{ form.username(size=32) }}
+            {{ form.username(size=32, class="form-control") }}
         </div>
-        <div>
+        <div class="form-group">
             <label for="email">Email:</label>
-            {{ form.email(size=32) }}
+            {{ form.email(size=32, class="form-control") }}
         </div>
-        <div>
+        <div class="form-group">
             <label for="contact_info">Contact Info:</label>
-            {{ form.contact_info(size=32) }}
+            {{ form.contact_info(size=32, class="form-control") }}
         </div>
-        <div>
+        <div class="form-group">
             <label for="address">Address:</label>
-            {{ form.address(size=32) }}
+            {{ form.address(size=32, class="form-control") }}
         </div>
 
-        <button type="submit">Update Profile</button>
+        <button type="submit" class="btn btn-primary">Update Profile</button>
     </form>
 
     <!-- Resume section -->
@@ -54,11 +49,9 @@
 
     <h2>Actions</h2>
     <!-- Link to upload resume page -->
-    <a href="{{ url_for('upload_resume') }}">Upload Resume</a><br>
+    <a href="{{ url_for('upload_resume') }}" class="btn btn-secondary">Upload Resume</a><br>
 
     <br><br>
     <!-- Logout option -->
-    <a href="{{ url_for('logout') }}">Logout</a>
-</body>
-</html>
-
+    <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+{% endblock %}
