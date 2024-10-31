@@ -30,7 +30,7 @@ To check whether you have python installed or not, you can open CMD or a Termina
 
 If this is not the case, then you need to download python installer package from [Python Installers](https://www.python.org/downloads/) based on your system's operating system and install it and you can further clone this repository to execute the scripts.
 
-You can refer [INSTALL.md](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/INSTALL.md) for the complete installation steps based on your OS.
+You can refer [Install.md](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/INSTALL.md) for the complete installation steps based on your OS.
 
 
 ## Demo Video
@@ -62,8 +62,7 @@ We have deployed our website [here](http://44.204.178.112:5000/)
 
 ## Contributors
 
-- [Mohit Soni](https://github.com/mohitsoni2111)
-- [Tilak Satra](https://github.com/tilaksatra)
-- [Akshat Savla](https://github.com/akshat22)
-- [Madiha Mansoori](https://github.com/madiha2001)
-- [Anagha Patil](https://github.com/Anagha-2000)
+- [Surabhi Nair](https://github.com/surabhi1914)
+- [Aarthi Hasitha Yepuri](https://github.com/Hasitha257)
+- [Sreeja Nukarapu](https://github.com/Sreeja-Nukarapu)
+
