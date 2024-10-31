@@ -3,10 +3,10 @@
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
 
-Operating System: Windows, macOS, Linux
-Web Browser: A modern web browser (e.g., Google Chrome, Mozilla Firefox, Safari)
+- **Operating System:** Windows, macOS, Linux
+- **Web Browser:** A modern web browser (e.g., Google Chrome, Mozilla Firefox, Safari)
 
-Install Python:
+***Install Python***:
 1) Download the windows installer for the python version you desire from [Python Downloads](https://www.python.org/downloads/) Based on the Operating System of your PC, you can download and install Python's latest as well as older versions. Please find below instructions for the same based on your OS.
 2) Double-click on the downloaded file and follow the instructions as requested.
 3) Once completed, add python in the environment variables of your system settings to enable python compiling from your command line.
