@@ -15,13 +15,13 @@ alt="License" src="https://img.shields.io/github/license/akshat22/campus-job-rev
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
 
-This is a Flask App for NCSU Campus Job Review System with SQL database for storage. Here students from NCSU can view reviews on all different jobs that are available on campus. The aim of the portal is to help students get a closer understanding of the job description and the work, as experienced by fellow students. The website allows the students to upload reviews for others to view. The anonymity of the students is maintained to let them upload honest reviews.
+The Campus Job Review System is a Flask App which has a SQL database for storage. It is created using Python.This website allows NCSU students to read reviews of any job that is open on campus. The portal's objective is to assist students in better comprehending the job description and the work through the experiences of their fellow students. Students can post reviews on the website for others to read. The pupils' anonymity is preserved so they can submit candid evaluations. Furthermore, the website offers user account management, allowing users to store their Resume and contact details. Only that specific user can modify these details after logging in (using the Account Page).
 
  ![alt text](https://github.com/akshat22/campus-job-review-system/blob/main/Data/homepage.jpeg)
 
 
 ## Pre-requisites
-To run these scripts, you will require Python installed on your PC. Please visit [Python Installers](https://www.python.org/downloads/) to download the lastest python version. Apart from that, other requirements can be installed with the help of requirements.txt.
+To execute these scripts, your computer must have Python installed. For the latest Python version, please visit [Python Installers](https://www.python.org/downloads/). You can use requirements.txt to install other requirements in addition to that. The requirements.txt file has been updated in light of the advancements made.
 
 ## Installation
 Initially you can check whether your system has python pre-installed or not, usually nowadays in most of the systems, be it Windows or MacOS, python is pre-installed. 
@@ -43,12 +43,19 @@ https://user-images.githubusercontent.com/50794731/205819285-9d4875ed-172e-427c-
 ## Contribution Code of Conduct
 
 The rules listed below are to be followed by the ones who will be contributing to the code in the repository:
+  1)Follow the code quality standards 
+  2)Testing: For every new feature or bug fix, write unit tests to ensure code correctness.
+  Ensure existing tests pass: Run all tests before submitting a pull request (PR) to ensure no existing functionality is broken.
+  Follow test coverage requirements: Aim to meet or exceed the project’s test coverage targets.
+  3)Keep commits small and relevant to a single task or fix. Write clear commit messages (e.g., "Fix issue with X" or "Add feature Y").
+  4)Use Markdown: Follow any guidelines for Markdown formatting and structuring of documentation files (e.g., README.md, CONTRIBUTING.md).
+  5) Branches: Use separate branches when and where needed.
+  6) Security and Confidentiality
+    Handle sensitive information carefully: Avoid hardcoding sensitive information, such as API keys or passwords. Use environment variables or secure configuration files.
+    Follow secure coding practices: Be mindful of security implications in your code (e.g., SQL injection, cross-site scripting).
   
-  - All the branches used to merge any code into the main branch should start with "KAPSS-".
-  - Atleast one review/approval is required from any other contributors of the project to merge a commit to the main branch.
-  - It is recommended to delete the branch as soon as it is merged to the main branch to avoid stale branches in the repository.
-  - It is encouraged to add name tags such as "feature-" or "patch-" in the branches if it is used to add code-patches or features in the project.
-  
+
+
 ### Code Coverage Screenshot
 
 ![alt text](https://github.com/akshat22/campus-job-review-system/blob/main/Data/code_coverage.jpeg)
