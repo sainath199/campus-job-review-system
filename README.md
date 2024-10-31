@@ -62,7 +62,7 @@ We have deployed our website [here](http://44.204.178.112:5000/)
 
 ## Contributors
 
-- [Surabhi Nair](https://github.com/surabhi1915)
+- [Surabhi Nair](https://github.com/surabhi1914)
 - [Aarthi Hasitha Yepuri](https://github.com/Hasitha257)
 - [Sreeja Nukarapu](https://github.com/Sreeja-Nukarapu)
 
