@@ -1,4 +1,4 @@
- # NC State Jobs Review System
+ # Campus Job Review System
  
 <!-- <a href="https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/actions" alt="Build Status"><img src="https://img.shields.io/github/workflow/status/ashishjoshi2605/ncsu-campus-jobs-review-system/Build%20main" /></a> -->
 <!-- <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/ashishjoshi2605/ncsu-campus-jobs-review-system/website?color=magenta&label=Documentation"> -->
@@ -30,7 +30,7 @@ To check whether you have python installed or not, you can open CMD or a Termina
 
 If this is not the case, then you need to download python installer package from [Python Installers](https://www.python.org/downloads/) based on your system's operating system and install it and you can further clone this repository to execute the scripts.
 
-You can refer [Install.md](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/INSTALL.md) for the complete installation steps based on your OS.
+You can refer [Install.md](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/install.md) for the complete installation steps based on your OS.
 
 
 ## Demo Video
