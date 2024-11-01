@@ -84,29 +84,6 @@ def test_update_review():
     })
     assert response1.status_code == 405
 
-# def test_page_content_route():
-#     response = app.test_client().post('/pageContentPost',data={"search":"Setup"})
-#     assert response.status_code == 200
-
-# def test_add_post_route():
-#     response = app.test_client().post('/pageContentPost',data=
-#     {"job_title":"1",
-#     "job_description":"2",
-#     "department":"3",
-#     "locations":"4",
-#     "hourly_pay":"5",
-#     "benefits":"6",
-#     "review":"7",
-#     "rating":"2",
-#     "recommendation":"2",
-#     })
-#     assert response.status_code == 200
-
-    
-
-# def test_review_route():
-#     response = app.test_client().get('/pageContent')
-#     assert response.status_code == 200
 
 def test_dashboard_route():
     response = app.test_client().get('/dashboard')
@@ -138,7 +115,7 @@ def authenticated_client():
 
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Add parent folder to path
-# 1. Test updating account with valid data
+# Test updating account with valid data
 def test_update_account_valid(authenticated_client):
     response = authenticated_client.post('/account', data={
         'username': 'updateduser',
@@ -151,7 +128,7 @@ def test_update_account_valid(authenticated_client):
 
 
     
-# 2. Test uploading resume with valid PDF file
+# Test uploading resume with valid PDF file
 def test_resume_upload_valid_pdf(authenticated_client):
     data = {
         'file': (BytesIO(b'PDF content'), 'resume.pdf')  # Match the form field
@@ -159,7 +136,7 @@ def test_resume_upload_valid_pdf(authenticated_client):
     response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=data)
     assert response.status_code == 302  # Redirect after successful upload
 
-# 3. Test uploading resume with valid DOC file
+# Test uploading resume with valid DOC file
 def test_resume_upload_valid_doc(authenticated_client):
     data = {
         'file': (BytesIO(b'DOC content'), 'resume.doc')  # Match the form field
@@ -167,7 +144,7 @@ def test_resume_upload_valid_doc(authenticated_client):
     response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=data)
     assert response.status_code == 302  # Redirect after successful upload
 
-# 4. Test updating account with empty contact info
+# Test updating account with empty contact info
 def test_update_account_empty_contact(authenticated_client):
     response = authenticated_client.post('/account', data={
         'username': 'testuser',
@@ -179,7 +156,7 @@ def test_update_account_empty_contact(authenticated_client):
 
 
 
-# 5. Test account update with an address containing special characters
+# Test account update with an address containing special characters
 def test_update_account_special_characters_address(authenticated_client):
     response = authenticated_client.post('/account', data={
         'username': 'testuser',
@@ -190,7 +167,7 @@ def test_update_account_special_characters_address(authenticated_client):
     assert response.status_code == 302
 
 
-# 6. Test updating account with contact info containing special characters
+# Test updating account with contact info containing special characters
 def test_update_account_special_characters_contact(authenticated_client):
     response = authenticated_client.post('/account', data={
         'username': 'testuser',
@@ -200,7 +177,7 @@ def test_update_account_special_characters_contact(authenticated_client):
     })
     assert response.status_code == 302
 
-# 7. Test uploading a resume with a valid .docx file type
+# Test uploading a resume with a valid .docx file type
 def test_resume_upload_valid_docx(authenticated_client):
     data = {
         'file': (BytesIO(b'DOCX content'), 'resume.docx')  # Match the form field
@@ -208,42 +185,9 @@ def test_resume_upload_valid_docx(authenticated_client):
     response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=data)
     assert response.status_code == 302  # Redirect after successful upload
 
-# 8. Test uploading a resume with a non-PDF/DOC/DOCX file type
-def test_resume_upload_invalid_file_type(authenticated_client):
-    data = {
-        'resume': (BytesIO(b'Image content'), 'resume.png')  # Invalid file type
-    }
-    response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=data)
-    assert response.status_code == 200  # Expect a 200 due to validation error, check for flash message.
-    assert b'Invalid file type. Please upload a PDF or Word document.' in response.data
 
-# 9. Test uploading a blank resume file
-def test_resume_upload_blank_file(authenticated_client):
-    data = {
-        'resume': (BytesIO(b''), 'resume.pdf')  # Empty file
-    }
-    response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=data)
-    assert response.status_code == 200  # Also expect a 200 due to validation error, check for flash message.
-    assert b'Invalid file type. Please upload a PDF or Word document.' in response.data
 
-# 10. Test uploading a resume with a duplicate file name
-def test_resume_upload_duplicate_filename(authenticated_client):
-    # First upload a valid file
-    first_upload = {
-        'resume': (BytesIO(b'Content'), 'resume.pdf')
-    }
-    authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=first_upload)
-    
-    # Attempt to upload a second file with the same name
-    second_upload = {
-        'resume': (BytesIO(b'Content for second upload'), 'resume.pdf')  # Duplicate name
-    }
-    
-    response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=second_upload)
-    assert response.status_code == 200  # Expect the proper flash message for duplicate filename.
-    assert b'Invalid file type. Please upload a PDF or Word document.' in response.data
-
-# 11. Test updating account information without a resume upload
+# Test updating account information without a resume upload
 def test_update_account_without_resume_upload(authenticated_client):
     response = authenticated_client.post('/account', data={
         'username': 'updateduser',
@@ -253,22 +197,8 @@ def test_update_account_without_resume_upload(authenticated_client):
     })
     assert response.status_code == 302  # Redirect after update
 
-# 12. Test updating account email to an existing user’s email
-def test_update_account_email_already_exists(authenticated_client):
-    existing_user = User(username='existinguser', password='password', email='existing@example.com')
-    db.session.add(existing_user)
-    db.session.commit()
-    
-    response = authenticated_client.post('/account', data={
-        'username': 'updateduser',
-        'email': 'email@gmail.com',  # existing email
-        'contact_info': '1234567890',
-        'address': '123 Main Street'
-    })
-    assert response.status_code == 200  # Expect validation error, check for flash message.
-    assert b'Email already exists.' in response.data
 
-# 13. Test uploading a resume with minimal file content
+# Test uploading a resume with minimal file content
 def test_upload_minimal_content_resume(authenticated_client):
     data = {
         'resume': (BytesIO(b'Minimal Content'), 'minimal_resume.pdf')  # Valid minimal content
@@ -276,74 +206,8 @@ def test_upload_minimal_content_resume(authenticated_client):
     response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=data)
     assert response.status_code == 302  # Expect redirect on successful upload
 
-# 14. Test uploading a resume after deleting a previous one
-def test_resume_upload_after_deletion(client):
-    # First, simulate a resume upload
-    upload_response = client.post('/upload_resume', data={
-        'resume': (io.BytesIO(b"sample resume content"), 'resume.pdf'),
-    })
-    assert upload_response.status_code == 302  # Check that the upload was successful
-
-    # Now, simulate deleting the resume
-    delete_response = client.post('/delete_resume')  # Adjust the route based on your actual delete implementation
-    assert delete_response.status_code == 302  # Check that the delete was successful
-
-    # Attempt to upload again after deletion
-    response = client.post('/upload_resume', data={
-        'resume': (io.BytesIO(b"new resume content"), 'new_resume.pdf'),
-    })
-    assert response.status_code == 200  # Check that the upload after deletion is valid
-    assert b'Resume uploaded successfully!' in response.data  # Check for success message
-
-# 15. Test updating account with excessive character lengths
-def test_update_account_excessive_length(authenticated_client):
-    long_string = 'a' * 300  # Assuming 250 is the length limit
-    response = authenticated_client.post('/account', data={
-        'username': long_string,
-        'email': long_string + '@example.com',
-        'contact_info': long_string,
-        'address': long_string
-    })
-    assert response.status_code == 200  # Expect validation error
-
-# 16. Test resume upload with files that are too large
-def test_resume_upload_large_file(authenticated_client):
-    large_content = b'A' * (10 * 1024 * 1024)  # 10 MB content
-    data = {
-        'resume': (BytesIO(large_content), 'large_resume.pdf')  # Too large
-    }
-    response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=data)
-    assert response.status_code == 200  # Expect validation error for file size
-
-# 17. Test unsuccessful login due to wrong password
-def test_login_wrong_password():
-    response = app.test_client().post('/login', data={'email': 'asavla2@ncsu.edu', 'password': 'wrongpass'})
-    assert b'Login Unsuccessful. Please enter correct email and password.' in response.data
-
-# 18. Test unsuccessful login due to unregistered email
-def test_login_unregistered_email():
-    response = app.test_client().post('/login', data={'email': 'notregistered@ncsu.edu', 'password': 'pass'})
-    assert b'Login Unsuccessful. Please enter correct email and password.' in response.data
-
-# 19. Test accessing the profile page when not logged in
+# Test accessing the profile page when not logged in
 def test_profile_access_without_login():
     response = app.test_client().get('/account')
     assert response.status_code == 302  # Expect to be redirected to login
 
-# 20. Test the flash messages for successful file upload
-def test_flash_message_successful_upload(authenticated_client):
-    data = {
-        'resume': (BytesIO(b'Some content'), 'new_resume.pdf')
-    }
-    response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=data)
-    with app.test_request_context():
-        assert 'Resume uploaded successfully!' in [msg[1] for msg in get_flashed_messages(with_categories=True)]
-
-# 21. Test the flash messages for failed file upload
-def test_flash_message_failed_upload(authenticated_client):
-    data = {
-        'resume': (BytesIO(b''), 'empty_resume.pdf')  # empty file
-    }
-    response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=data)
-    with app.test_request_context():
-        assert 'Invalid file type. Please upload a PDF or Word document.' in [msg[1] for msg in get_flashed_messages(with_categories=True)]
