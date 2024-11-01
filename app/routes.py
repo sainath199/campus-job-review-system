@@ -312,14 +312,35 @@ def getVacantJobs():
 
 @app.route("/job_listings", methods=['GET'])
 def job_listings():
-    search_query = request.args.get('search', '').strip()  # Get the search query
-    if search_query:
-        # Filter vacancies based on the job title matching the search query
-        vacancies = Vacancies.query.filter(Vacancies.jobTitle.ilike(f'%{search_query}%')).all()
-    else:
-        vacancies = Vacancies.query.all()  # Fetch all vacancies if no search query is provided
+    search_title = request.args.get('search', '').strip()  # Get the job title search query
+    job_location = request.args.get('jobLocation', '').strip()  # Get the job location
+    pay_rate = request.args.get('payRate', '').strip()  # Get the selected pay rate
+    max_hours_allowed = request.args.get('maxHoursAllowed', '').strip()  # Get max hours allowed
+    
+    query = Vacancies.query
 
-    return render_template("dashboard.html", vacancies=vacancies)  # Render the dashboard template with filtered vacancies
+    # Apply filters based on the search criteria
+    if search_title:
+        query = query.filter(Vacancies.jobTitle.ilike(f'%{search_title}%'))
+    
+    if job_location:
+        query = query.filter(Vacancies.jobLocation.ilike(f'%{job_location}%'))
+
+    if pay_rate:
+        if pay_rate == "30+":
+            query = query.filter(Vacancies.jobPayRate > 30)
+        else:
+            query = query.filter(Vacancies.jobPayRate <= float(pay_rate))
+
+    if max_hours_allowed:
+        if max_hours_allowed == "40+":
+            query = query.filter(Vacancies.maxHoursAllowed > 40)
+        else:
+            query = query.filter(Vacancies.maxHoursAllowed <= int(max_hours_allowed))
+    
+    vacancies = query.all()  # Execute the query
+    
+    return render_template("dashboard.html", vacancies=vacancies)
 
 
 
