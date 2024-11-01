@@ -5,10 +5,11 @@ from io import BytesIO
 from app import db, app  # Directly import the app instance
 from app.models import User 
 import warnings
+from werkzeug.security import check_password_hash
+from app.models import UserProfile, Resume
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 sys.path.append(os.getcwd()[:-5]+"app")
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Add parent folder to path
 
 def test_index_route():
     response = app.test_client().get('/')
@@ -133,7 +134,7 @@ def authenticated_client():
         db.drop_all()  # Clean up the database after tests
 
 
-
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Add parent folder to path
 # 1. Test updating account with valid data
 def test_update_account_valid(authenticated_client):
     response = authenticated_client.post('/account', data={
@@ -203,5 +204,4 @@ def test_resume_upload_valid_docx(authenticated_client):
     }
     response = authenticated_client.post('/upload_resume', content_type='multipart/form-data', data=data)
     assert response.status_code == 302  # Redirect after successful upload
-
 
