@@ -3,13 +3,36 @@
     <div class="container-fluid banner2 text-center">
         <h1 class="text-center bold">Part Time Job Listings</h1>
         
-        <!-- Search Form -->
         <form method="GET" action="{{ url_for('job_listings') }}">
             <div class="input-group mb-3">
                 <input type="text" name="search" class="form-control" placeholder="Search by Job Title" aria-label="Job Title" aria-describedby="button-addon2">
-                <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
+                <input type="text" name="jobLocation" class="form-control" placeholder="Location" aria-label="Job Location">
+                
+                
+                <select name="payRate" class="form-select" aria-label="Pay Rate">
+                    <option value="">Select Pay Rate</option>
+                    <option value="10">Up to $10</option>
+                    <option value="15">Up to $15</option>
+                    <option value="20">Up to $20</option>
+                    <option value="25">Up to $25</option>
+                    <option value="30">Up to $30</option>
+                    <option value="30+">Above $30</option>
+                </select>
+        
+            
+                <select name="maxHoursAllowed" class="form-select" aria-label="Maximum Working Hours Allowed">
+                    <option value="">Select Max Hours</option>
+                    <option value="10">Up to 10 Hours</option>
+                    <option value="20">Up to 20 Hours</option>
+                    <option value="30">Up to 30 Hours</option>
+                    <option value="40">Up to 40 Hours</option>
+                    <option value="40+">More than 40 Hours</option>
+                </select>
+        
+                <button class="btn btn-outline-danger ml-2"  type="submit" id="button-addon2" >Search</button>
             </div>
         </form>
+        
 
         <div class="col-md-12 text-right">
             <button
