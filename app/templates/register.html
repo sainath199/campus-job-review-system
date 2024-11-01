@@ -59,6 +59,12 @@
                         {{ form.confirm_password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+                <div class="form-group form-check">
+                    {{ form.is_admin(class="form-check-input") }}
+                    {{ form.is_admin.label('Register as Admin', class="form-check-label") }}
+                </div>
+                
+                
             </fieldset>
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}

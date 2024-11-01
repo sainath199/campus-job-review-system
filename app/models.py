@@ -2,6 +2,7 @@ from app import db, login_manager
 from flask_login import UserMixin
 from datetime import datetime
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -22,44 +23,6 @@ class Reviews(db.Model):
     recommendation = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
-
-class Vacancies(db.Model):
-    """Model which stores the information of the vacancies available"""
-
-    vacancyId = db.Column(db.Integer, primary_key=True)
-    jobTitle = db.Column(db.String(500), index=True, nullable=False)
-    jobDescription = db.Column(db.String(1000), index=True, nullable=False)
-    jobLocation = db.Column(db.String(500), index=True, nullable=False)
-    jobPayRate = db.Column(db.String(120), index=True, nullable=False)
-    maxHoursAllowed = db.Column(db.Integer, nullable=False)
-
-    def __init__(self, jobTitle, jobDescription, jobLocation, jobPayRate, maxHoursAllowed):
-        self.jobTitle = jobTitle
-        self.jobDescription = jobDescription
-        self.jobLocation = jobLocation
-        self.jobPayRate = jobPayRate
-        self.maxHoursAllowed = maxHoursAllowed
-
-
-class User(db.Model, UserMixin):
-    """Model which stores basic user account information"""
-
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    image_file = db.Column(db.String(20), nullable=False, default="default.jpg")
-    contact_info=db.Column(db.String(200))
-    address=db.Column(db.String(200))
-    password = db.Column(db.String(60), nullable=False)
-    reviews = db.relationship("Reviews", backref="author", lazy=True)
-    profile = db.relationship("UserProfile", uselist=False, backref="user")
-    resumes = db.relationship("Resume", backref="user", lazy=True)
-    resume_file_path = db.Column(db.String(300), nullable=True)
-
-    def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
-
-
 class UserProfile(db.Model):
     """Model which stores additional profile information for users"""
 
@@ -68,8 +31,45 @@ class UserProfile(db.Model):
     name = db.Column(db.String(100), nullable=False)
     contact_info = db.Column(db.String(255), nullable=True)
     address = db.Column(db.String(255), nullable=True)
-    # Add any additional fields as needed for user profile information
 
+
+class Vacancies(db.Model):
+
+    """Model which stores the information of the reviews submitted"""
+
+    vacancyId = db.Column(db.Integer, primary_key=True)
+    jobTitle = db.Column(db.String(500), index=True, nullable=False)
+    jobDescription = db.Column(db.String(1000), index=True, nullable=False)
+    jobLocation = db.Column(db.String(500), index=True, nullable=False)
+    jobPayRate = db.Column(db.String(120), index=True, nullable=False)
+    maxHoursAllowed = db.Column(db.Integer, nullable=False)
+
+    def __init__(
+        self, jobTitle, jobDescription, jobLocation, jobPayRate, maxHoursAllowed
+    ):
+        self.jobTitle = jobTitle
+        self.jobDescription = jobDescription
+        self.jobLocation = jobLocation
+        self.jobPayRate = jobPayRate
+        self.maxHoursAllowed = maxHoursAllowed
+
+
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default="default.jpg")
+    contact_info = db.Column(db.String(255), nullable=True)
+    address = db.Column(db.String(255), nullable=True)
+    resumes = db.relationship("Resume", backref="user", lazy=True)
+    resume_file_path = db.Column(db.String(300), nullable=True)
+    password = db.Column(db.String(60), nullable=False)
+    reviews = db.relationship("Reviews", backref="author", lazy=True)
+    is_admin = db.Column(db.Boolean, default=False)
+
+    def __repr__(self):
+        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 class Resume(db.Model):
     """Model which stores information about uploaded resumes"""
@@ -79,5 +79,5 @@ class Resume(db.Model):
     resume_file = db.Column(db.String(255), nullable=False)  # Path to uploaded resume file
     upload_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    def __repr__(self):
+    def _repr_(self):
         return f"Resume(User ID: '{self.user_id}', File: '{self.resume_file}', Uploaded: '{self.upload_date}')"

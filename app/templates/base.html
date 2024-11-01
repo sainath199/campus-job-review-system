@@ -32,16 +32,22 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/dashboard">JOB VACANCIES</a>
                                 </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link" href="#">ABOUT</a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about">ABOUT</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">CONTACT</a>
-                                </li> -->
+                                    <a class="nav-link" href="/contact"">CONTACT</a>
+                                </li>
                                 {% if current_user.is_authenticated %}
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/account">ACCOUNT</a>
-                                    </li>
+                                    {% if current_user.is_admin %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url_for('admin_dashboard') }}">ACCOUNT</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/account">ACCOUNT</a>
+                                        </li>
+                                    {% endif %}
                                     <li class="nav-item">
                                         <a class="nav-link" href="/logout">LOGOUT</a>
                                     </li>
@@ -50,6 +56,7 @@
                                         <a class="nav-link" href="/login">LOGIN</a>
                                     </li>
                                 {% endif %}
+                                
                             </ul>
                         </nav>
                     </div>

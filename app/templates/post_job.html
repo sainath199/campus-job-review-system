@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid banner2">
+    <div class="content-section">
+        <h1>Post a Job</h1>
+        <form action="{{ url_for('post_job') }}" method="POST">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                <label for="jobTitle">Job Title</label>
+                {{ form.jobTitle(class="form-control", id="jobTitle") }}
+            </div>
+            <div class="form-group">
+                <label for="jobDescription">Job Description</label>
+                {{ form.jobDescription(class="form-control", id="jobDescription") }}
+            </div>
+            <div class="form-group">
+                <label for="jobPayRate">Pay Rate</label>
+                {{ form.jobPayRate(class="form-control", id="jobPayRate") }}
+            </div>
+            <div class="form-group">
+                <label for="jobLocation">Location</label>
+                {{ form.jobLocation(class="form-control", id="jobLocation") }}
+            </div>
+            <div class="form-group">
+                <label for="maxHoursAllowed">Maximum Working Hours Allowed</label>
+                {{ form.maxHoursAllowed(class="form-control", id="maxHoursAllowed") }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary mt-3">Back to Home</a>
+    </div>
+    </div>
+{% endblock content %}

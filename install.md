@@ -1,46 +1,67 @@
-Installing Python
-==========================
+## Installation Guide
 
-Based on the Operating System of your PC, you can download and install Python's latest as well as older versions. Please find below instructions for the same based on your OS.
+## Prerequisites
+Before you begin, ensure you have met the following requirements:
 
+- **Operating System:** Windows, macOS, Linux
+- **Web Browser:** A modern web browser (e.g., Google Chrome, Mozilla Firefox, Safari)
 
-## Installing (for Windows)
+***Install Python***:
+1. **Download Python:**
+   Download the Windows installer for the Python version you desire from [Python Downloads](https://www.python.org/downloads/). Based on your operating system, you can download and install Python's latest or older versions. 
 
-Download the windows installer for the python version you desire from [Python Downloads](https://www.python.org/downloads/)
+2. **Install Python:**
+   Double-click on the downloaded file and follow the instructions provided.
 
-Double-click on the downloaded file and follow the instructions as requested.
+3. **Add Python to Environment Variables:**
+   Once completed, add Python to the environment variables of your system settings to enable Python compiling from your command line.
 
-Once completed, add python in the environment variables of your system settings to enable python compiling from your command line.
+4. **Verify Installation:**
+   You can verify if the Python installation was successful either through the command line or the IDLE app that gets installed along with Python. Search for the command prompt and type:
+   ```bash
+   python --version
+   
+## Follow these steps to install the project:
 
-You can verify if the Python installation is successful either through the command line or through the IDLE app that gets installed along with the installation. Search for the command prompt and type “python”. You can see that Python "version" is successfully installed.
+### Installing (for Windows)
 
-To check python version, run this command in your CMD or Terminal:
+*1. Clone the Repository* - Start by cloning the repository to your local machine. 
 
+``` bash
+git clone https://github.com/Fall-2024-SE-Group/campus-job-review-system.git
+```
+
+*2. Navigate into the project directory*
+
+``` bash
+cd campus-job-review-system/
+```
+
+*3. Setting up the virtual python environment*
 ```bash
-python --version
-```
-```
-git clone https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system.git
-```
-```
-cd ncsu-campus-jobs-review-system/
-```
-```
 python -m venv venv
 ```
 ```
 .\venv\Scripts\activate
 ```
-```
+
+*4. Install dependencies*
+
+``` bash
 pip install --upgrade pip
 ```
 ```
 pip install -r requirements.txt
 ```
-```
+
+*5. Set the FLASK_APP environment variable*
+
+``` bash
 set FLASK_APP=crudapp.py
 ```
-```
+
+*6. Set up the database*
+``` bash
 flask db init
 ```
 ```
@@ -49,29 +70,37 @@ flask db migrate -m "entries table"
 ```
 flask db upgrade
 ```
-```
+
+*7. Run the application*
+``` bash
 flask run
 ```
 
 
-## Mac OS
+### Mac OS
 
 MacOS comes with Python pre-installed. But it's Python Version 2.7, which is now deprecated (abandoned by the Python developer community).
 
-To install the latest version of python in your mac, first you need to install [Homebrew](https://brew.sh/), a powerful package manager for Mac.
+1)**Install Homebrew:**
 
-Open your terminal and run this command to install Homebrew in your system:
+To install the latest version of python in your mac, first you need to install [Homebrew](https://brew.sh/), a powerful package manager for Mac.*
+
+-Open your terminal and run this command to install Homebrew in your system:
 ```bash
 "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+-Your terminal will ask for admin.user access of your system. You will need to type your password to run this command. This is the same password you type when you log into your Mac. Type it and hit enter.
 
-Your terminal will ask for admin.user access of your system. You will need to type your password to run this command. This is the same password you type when you log into your Mac. Type it and hit enter.
+
+2)**Install Python:**
 
 Once you are done with installing the Homebrew package, you can run this command in your terminal to install python with the desired version you want.
-
 ```bash
-python version 3.6.5
+python version 3.12.6
 ```
+
+3)**Verify Installation:**
+
 Once done, you can run this command to check if you have successfully installed python in your system or its version:
 ```bash
 python3 --version
