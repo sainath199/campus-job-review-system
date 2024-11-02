@@ -46,6 +46,7 @@ def register():
         )
         db.session.add(user)
         db.session.commit()
+        print("Registered user:", user.username, user.email)
         flash(
             "Account created successfully! Please log in with your credentials.",
             "success",
@@ -71,7 +72,8 @@ def delete_review(review_id):
 @login_required
 def delete_user(user_id):
     user = User.query.get_or_404(user_id)
-
+    if not current_user.is_admin:
+        return "You do not have permission to delete this user", 403
     db.session.delete(user)
     db.session.commit()
     flash('User has been deleted successfully.', 'success')
@@ -79,8 +81,11 @@ def delete_user(user_id):
 
 @app.route('/toggle_admin/<int:user_id>', methods=['POST'])
 @login_required
+@admin_required
 def toggle_admin(user_id):
     user = User.query.get_or_404(user_id)
+    if not current_user.is_admin:
+        abort(403) 
     user.is_admin = not user.is_admin
     db.session.commit()
     flash('User admin status has been updated.', 'success')
@@ -90,9 +95,8 @@ def toggle_admin(user_id):
 @login_required
 @admin_required
 def admin_dashboard():
-    # if not current_user.is_admin:
-    #     flash('Access denied. You do not have permission to view this page.', 'danger')
-    #     return redirect(url_for('index.html'))
+    if not current_user.is_admin:  # Assuming you have an is_admin attribute
+        abort(403)
     reviews = Reviews.query.all()
     users = User.query.all()
     jobs = Vacancies.query.all() 
@@ -138,7 +142,10 @@ def view_reviews():
     return render_template("view_reviews.html", entries=entries)
 
 @app.route("/post-job", methods=["GET", "POST"])
+@login_required
 def post_job():
+    if not current_user.is_admin:  # Check if the current user is not an admin
+        return abort(403)
     form = JobPostingForm()
     if form.validate_on_submit():
         print("Form validated successfully.")
@@ -156,6 +163,8 @@ def post_job():
             "Job posted successfully!", "success"
         )
         return redirect(url_for("getVacantJobs"))
+    else:
+        print("Form errors:",form.errors)
     return render_template("post_job.html", form=form)
 
 @app.route("/account", methods=["GET", "POST"])
@@ -220,9 +229,12 @@ def upload_resume():
                            
 @app.route('/delete-job/<int:job_id>', methods=['POST'])
 @login_required
+@admin_required
 def delete_job(job_id):
     # Fetch and delete the job based on job_id
-    job = Vacancies.query.get(job_id)
+    job = Vacancies.query.get_or_404(job_id)
+    if not current_user.is_admin:  # Check if the current user is not an admin
+        return abort(403)
     if job:
         db.session.delete(job)
         db.session.commit()
