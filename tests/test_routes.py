@@ -330,3 +330,40 @@ def test_successful_logout(client):
 def test_view_nonexistent_job(client):
     response = client.get('/job/999')  # Assuming job ID 999 does not exist
     assert response.status_code == 404
+
+def create_test_jobs():
+    job1 = Vacancies(
+        jobTitle="Data Scientist", 
+        jobDescription="Analyze data and build models", 
+        jobLocation="New York", 
+        jobPayRate="100000", 
+        maxHoursAllowed=40
+    )
+    job2 = Vacancies(
+        jobTitle="Software Engineer", 
+        jobDescription="Develop software applications", 
+        jobLocation="San Francisco", 
+        jobPayRate="120000", 
+        maxHoursAllowed=45
+    )
+    db.session.add(job1)
+    db.session.add(job2)
+    db.session.commit()
+
+def test_filter_by_pay_rate(client):
+    create_test_jobs()  # Ensure jobs are created
+
+    response = client.get('/job_listings?pay_rate=100000')  # Adjust URL to match your route
+    assert b'Data Scientist' in response.data  # Check for the job title
+
+def test_filter_by_max_hours(client):
+    create_test_jobs()  # Ensure jobs are created
+
+    response = client.get('/job_listings?max_hours=40')  # Adjust URL to match your route
+    assert b'Data Scientist' in response.data  # Check for the job title
+
+def test_filter_by_location(client):
+    create_test_jobs()  # Ensure jobs are created
+
+    response = client.get('/job_listings?location=San Francisco')  # Adjust URL to match your route
+    assert b'Software Engineer' in response.data  # Check for the job title
