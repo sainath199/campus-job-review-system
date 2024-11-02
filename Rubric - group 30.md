@@ -4,8 +4,8 @@
 |Notes|Self Assessment|Evidence|
 |-----|-|---------|
 |Workload is spread over the whole team (one team member is often Xtimes more productive than the other but nevertheless, here is a track record that everyone is contributing a lot) | 3| [Commits](https://github.com/Fall-2024-SE-Group/campus-job-review-system/commits/main/) |
-|Number of commits | 3 | 53 |
-|Number of commits: by different people | 3 |  Surabhi - 16, Aarthi -, Sreeja - |
+|Number of commits | 3 | 85+ |
+|Number of commits: by different people | 3 |  Surabhi - 24, Aarthi - 40, Sreeja - 25|
 |Issues reports: there are many | 3 | [Issues](https://github.com/Fall-2024-SE-Group/campus-job-review-system/issues) |
 |Issues are being closed | 3 | [Closed Issues](https://github.com/Fall-2024-SE-Group/campus-job-review-system/issues?q=is%3Aissue+is%3Aclosed) |
 |Docs: doco generated, format not ugly | 3 | |
@@ -17,7 +17,7 @@
 | Test cases exist | 3 | [Tests](https://github.com/Fall-2024-SE-Group/campus-job-review-system/tree/main/tests) |
 | Test cases are routinely executed | 3 | [Github actions](https://github.com/Fall-2024-SE-Group/campus-job-review-system/actions) |
 | Issues are discussed before they are closed | 3 | [Issue 1](https://github.com/Fall-2024-SE-Group/campus-job-review-system/issues/4) |
-|Chat channel: exists | 3 ||
+|Chat channel: exists | 3 |  [README.md](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/README.md) |
 | Test cases: a large proportion of the issues related to handling failing cases. | 3 | [Test case failure](https://github.com/Fall-2024-SE-Group/campus-job-review-system/issues?q=is%3Aissue+is%3Aclosed)|
 | Evidence that the whole team is using the same tools: everyone can get to all tools and files | 3 | Multiple members worked setup the project in their system and worked on each enhancement |
 | Evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people) | 3 | |
@@ -32,8 +32,8 @@
 | The file README.md contains all the following | 3 | [Readme.md](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/README.md) |
 | Video | 3 |[README.md](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/README.md) |
 |DOI badge: exists. To get a Digitial Object Indentifier, regiser the project at Zenodo. DOI badges look like this: Zenodo doi badge | 3 | |
-|Badges showing your style checkers | 3 | |
-|Badges showing your code formatters |  3 | |
-|Badges showing your syntax checkers.| 3 | |
-|Badges showing your code coverage tools | 3 | |
-|Badges showing any other Other automated analysis tools | 3 | |
+|Badges showing your style checkers | 3 | [README.md](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/README.md)  |
+|Badges showing your code formatters |  3 | [README.md](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/README.md)  |
+|Badges showing your syntax checkers.| 3 | [README.md](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/README.md)  |
+|Badges showing your code coverage tools | 3 | [README.md](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/README.md)  |
+|Badges showing any other Other automated analysis tools | 3 |[README.md](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/README.md)  |
