@@ -53,7 +53,8 @@ https://user-images.githubusercontent.com/50794731/205819285-9d4875ed-172e-427c-
 
 
 ## Poster for Stage 1
-![alt text](https://github.com/andre-motta/CSC-510-Fall2024-ProjectPosters/blob/main/Posters/Group30/Group30_Poster1.pdf)
+![image](https://github.com/user-attachments/assets/408451c7-bb33-4996-842e-b254a20c440d)
+
 
 ## Contribution Code of Conduct
 
