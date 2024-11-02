@@ -2,10 +2,12 @@
  
 <!-- <a href="https://github.com/Fall-2024-SE-Group/campus-job-review-system/actions" alt="Build Status"><img src="https://img.shields.io/github/workflow/status/github.com/Fall-2024-SE-Group/campus-job-review-system/Build%20main" /></a> -->
 
-<!-- <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/![image](https://github.com/user-attachments/assets/0b2a9ba1-133f-43ac-9734-692214d15106)
-/website?color=magenta&label=Documentation"> -->
+<!-- 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/user-attachments/assets/website?color=magenta&label=Documentation)
+-->
 
-[![DOI](https://https://zenodo.org/records/14027357)](https://zenodo.org/badge/latestdoi/14027357)
+
+[![DOI](https://zenodo.org/badge/DOI/14027357.svg)](https://zenodo.org/badge/latestdoi/14027357)
 
 <a href="https://github.com/![image](https://github.com/user-attachments/assets/8ec674e2-4e99-4025-a651-82736b866a24)
 /blob/main/LICENSE"><img                                              
