@@ -38,7 +38,8 @@ You can refer [Install.md](https://github.com/Fall-2024-SE-Group/campus-job-revi
 
 
 ## Demo Video
-https://user-images.githubusercontent.com/50794731/205819285-9d4875ed-172e-427c-9c0c-591957081a78.mp4
+### Video Demo
+[![Watch the video](Project2 (1) (1).mp4)
 
 
 ## Poster for Stage 1
