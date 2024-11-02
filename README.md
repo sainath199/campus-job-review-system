@@ -9,10 +9,10 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14027357.svg)](https://doi.org/10.5281/zenodo.14027357)
 
-<a href="https://github.com/![image](https://github.com/user-attachments/assets/8ec674e2-4e99-4025-a651-82736b866a24)
-/blob/main/LICENSE"><img                                              
-alt="License" src="https://img.shields.io/github/license/![image](https://github.com/user-attachments/assets/3ea30558-e70f-4e62-9413-d8805548bff0)
-"></a>
+<a href="https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/LICENSE">
+  <img alt="License" src="https://img.shields.io/github/license/Fall-2024-SE-Group/campus-job-review-system">
+</a>
+
 
 [![GitHub Release](https://img.shields.io/github/release/![image](https://github.com/user-attachments/assets/1c306eea-4740-45a8-ba5c-01e63ba412df)
 )](https://github.com/![image](https://github.com/user-attachments/assets/eaa640cb-8fa6-42f7-90f3-274c077adcc0)
