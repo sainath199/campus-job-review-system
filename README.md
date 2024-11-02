@@ -22,6 +22,8 @@ The Campus Job Review System is a Flask App which has a SQL database for storage
 
  ![alt text](interface_image_2.jpeg)
  ![alt text](interface_image_1.jpeg)
+ ![alt text](account_page.jpeg)
+ 
 
 ## Pre-requisites
 To execute these scripts, your computer must have Python installed. For the latest Python version, please visit [Python Installers](https://www.python.org/downloads/). You can use requirements.txt to install other requirements in addition to that. The requirements.txt file has been updated in light of the advancements made.
