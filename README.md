@@ -1,11 +1,20 @@
  # Campus Job Review System
  
 <!-- <a href="https://github.com/Fall-2024-SE-Group/campus-job-review-system/actions" alt="Build Status"><img src="https://img.shields.io/github/workflow/status/github.com/Fall-2024-SE-Group/campus-job-review-system/Build%20main" /></a> -->
-<!-- <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/ashishjoshi2605/ncsu-campus-jobs-review-system/website?color=magenta&label=Documentation"> -->
+
+<!-- <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/![image](https://github.com/user-attachments/assets/0b2a9ba1-133f-43ac-9734-692214d15106)
+/website?color=magenta&label=Documentation"> -->
+
 [![DOI](https://zenodo.org/badge/571841941.svg)](https://zenodo.org/badge/latestdoi/571841941)
-<a href="https://github.com/akshat22/campus-job-review-system/blob/main/LICENSE"><img                                              
-alt="License" src="https://img.shields.io/github/license/akshat22/campus-job-review-system"></a>
-[![GitHub Release](https://img.shields.io/github/release/akshat22/campus-job-review-system.svg)](https://github.com/akshat22/campus-job-review-system/releases)
+
+<a href="https://github.com/![image](https://github.com/user-attachments/assets/8ec674e2-4e99-4025-a651-82736b866a24)
+/blob/main/LICENSE"><img                                              
+alt="License" src="https://img.shields.io/github/license/![image](https://github.com/user-attachments/assets/3ea30558-e70f-4e62-9413-d8805548bff0)
+"></a>
+
+[![GitHub Release](https://img.shields.io/github/release/![image](https://github.com/user-attachments/assets/1c306eea-4740-45a8-ba5c-01e63ba412df)
+)](https://github.com/![image](https://github.com/user-attachments/assets/eaa640cb-8fa6-42f7-90f3-274c077adcc0)
+/releases)
 
 [![code-coverage](https://img.shields.io/badge/code--coverage-62%25-green)](https://drive.google.com/file/d/1oO6JZ_l4851oo6Akqr53Kv9ANjqwhcnr/view?usp=share_link)
 
