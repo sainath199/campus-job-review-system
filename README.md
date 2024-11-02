@@ -6,11 +6,16 @@
 <a href="https://github.com/akshat22/campus-job-review-system/blob/main/LICENSE"><img                                              
 alt="License" src="https://img.shields.io/github/license/akshat22/campus-job-review-system"></a>
 [![GitHub Release](https://img.shields.io/github/release/akshat22/campus-job-review-system.svg)](https://github.com/akshat22/campus-job-review-system/releases)
+
 [![code-coverage](https://img.shields.io/badge/code--coverage-62%25-green)](https://drive.google.com/file/d/1oO6JZ_l4851oo6Akqr53Kv9ANjqwhcnr/view?usp=share_link)
-[![GitHub contributors](https://img.shields.io/github/contributors/akshat22/campus-job-review-system)](https://github.com/akshat22/campus-job-review-system/graphs/contributors)
-[![Open Issues](https://img.shields.io/github/issues/akshat22/campus-job-review-system)](https://github.com/akshat22/campus-job-review-system/issues)
-![Closed issues](https://img.shields.io/github/issues-closed/akshat22/campus-job-review-system?color=bright-green)
-[![Pull Requests](https://img.shields.io/github/issues-pr/akshat22/campus-job-review-system)](https://github.com/akshat22/campus-job-review-system)
+
+[![GitHub contributors](https://img.shields.io/github/contributors/Fall-2024-SE-Group/campus-job-review-system)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/graphs/contributors)
+
+[![Open Issues](https://img.shields.io/github/issues/Fall-2024-SE-Group/campus-job-review-system)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/issues)
+
+![Closed issues](https://img.shields.io/github/issues-closed/Fall-2024-SE-Group/campus-job-review-system?color=bright-green)
+
+[![Pull Requests](https://img.shields.io/github/issues-pr/Fall-2024-SE-Group/campus-job-review-system)](https://github.com/Fall-2024-SE-Group/campus-job-review-system)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
 
@@ -18,7 +23,7 @@ alt="License" src="https://img.shields.io/github/license/akshat22/campus-job-rev
 
 The Campus Job Review System is a Flask App which has a SQL database for storage. It is created using Python.This website allows NCSU students to read reviews of any job that is open on campus. The portal's objective is to assist students in better comprehending the job description and the work through the experiences of their fellow students. Students can post reviews on the website for others to read. The pupils' anonymity is preserved so they can submit candid evaluations. Furthermore, the website offers user account management, allowing users to store their Resume and contact details. Only that specific user can modify these details after logging in (using the Account Page).
 
- ![alt text](https://github.com/akshat22/campus-job-review-system/blob/main/Data/homepage.jpeg)
+ ![alt text](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/Data/homepage.jpeg)
 
 
 ## Pre-requisites
