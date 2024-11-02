@@ -62,7 +62,7 @@ The rules listed below are to be followed by the ones who will be contributing t
 
 ### Chat Channel Screenshot
 
-![alt text](https://github.com/akshat22/campus-job-review-system/blob/main/Data/chatCommunication.jpeg)
+![alt text](Screenshot 2024-11-01 213341.png)
 
 ## Deployment
 We have deployed our website [here](http://44.204.178.112:5000/)
