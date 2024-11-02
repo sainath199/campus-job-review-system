@@ -38,7 +38,7 @@ You can refer [Install.md](https://github.com/Fall-2024-SE-Group/campus-job-revi
 
 
 ## Demo Video
-(Project2 (1) (1).mp4)
+[(Project2 (1) (1).mp4)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/Project2%20(1)%20(1).mp4)
 
 
 
