@@ -13,10 +13,9 @@
   <img alt="License" src="https://img.shields.io/github/license/Fall-2024-SE-Group/campus-job-review-system">
 </a>
 
+[![GitHub Release](https://img.shields.io/github/release/Fall-2024-SE-Group/campus-job-review-system.svg)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/releases)
 
-[![GitHub Release](https://img.shields.io/github/release/![image](https://github.com/user-attachments/assets/1c306eea-4740-45a8-ba5c-01e63ba412df)
-)](https://github.com/![image](https://github.com/user-attachments/assets/eaa640cb-8fa6-42f7-90f3-274c077adcc0)
-/releases)
+
 
 
 ![Black](https://img.shields.io/badge/code%20style-black-000000)
