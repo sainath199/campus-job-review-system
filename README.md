@@ -5,7 +5,7 @@
 <!-- <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/![image](https://github.com/user-attachments/assets/0b2a9ba1-133f-43ac-9734-692214d15106)
 /website?color=magenta&label=Documentation"> -->
 
-[![DOI](https://zenodo.org/badge/571841941.svg)](https://zenodo.org/badge/latestdoi/571841941)
+[![DOI](https://https://zenodo.org/records/14027357)](https://zenodo.org/badge/latestdoi/14027357)
 
 <a href="https://github.com/![image](https://github.com/user-attachments/assets/8ec674e2-4e99-4025-a651-82736b866a24)
 /blob/main/LICENSE"><img                                              
@@ -79,9 +79,6 @@ The rules listed below are to be followed by the ones who will be contributing t
 
 ![image](chat_image)
 
-
-## Deployment
-We have deployed our website [here](http://127.0.0.1:5000/)
 
 ## Contributors
 
