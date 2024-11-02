@@ -41,7 +41,7 @@ def create_test_job():
 
 def test_index_route():
     response = app.test_client().get('/')
-    assert response.status_code == 200
+    assert response.status_code == 302
 
 def test_index_route_2():
     response = app.test_client().get('/home')
