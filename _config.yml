@@ -1,10 +1,2 @@
 theme: jekyll-theme-dinky
 
-flake8:
-  max-line-length: 79
-  exclude:
-    - __init__.py
-    - .git
-    - .venv
-    - build
-    - dist
