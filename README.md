@@ -63,7 +63,7 @@ The rules listed below are to be followed by the ones who will be contributing t
 
 ### Code Coverage Screenshot
 
-![alt text](https://github.com/akshat22/campus-job-review-system/blob/main/Data/code_coverage.jpeg)
+![alt text](test_coverage.jpg)
 
 ### Chat Channel Screenshot
 
