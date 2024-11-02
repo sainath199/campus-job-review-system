@@ -16,6 +16,10 @@ alt="License" src="https://img.shields.io/github/license/![image](https://github
 )](https://github.com/![image](https://github.com/user-attachments/assets/eaa640cb-8fa6-42f7-90f3-274c077adcc0)
 /releases)
 
+
+![Prettier](https://img.shields.io/badge/code%20style-prettier-ff69b4)
+
+
 [![code-coverage](https://img.shields.io/badge/code--coverage-62%25-green)](https://drive.google.com/file/d/1oO6JZ_l4851oo6Akqr53Kv9ANjqwhcnr/view?usp=share_link)
 
 [![GitHub contributors](https://img.shields.io/github/contributors/Fall-2024-SE-Group/campus-job-review-system)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/graphs/contributors)
