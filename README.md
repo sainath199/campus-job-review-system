@@ -1,19 +1,20 @@
  # Campus Job Review System
  
-<!-- <a href="https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/actions" alt="Build Status"><img src="https://img.shields.io/github/workflow/status/ashishjoshi2605/ncsu-campus-jobs-review-system/Build%20main" /></a> -->
+<!-- <a href="https://github.com/Fall-2024-SE-Group/campus-job-review-system/actions" alt="Build Status"><img src="https://img.shields.io/github/workflow/status/github.com/Fall-2024-SE-Group/campus-job-review-system/Build%20main" /></a> -->
 <!-- <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/ashishjoshi2605/ncsu-campus-jobs-review-system/website?color=magenta&label=Documentation"> -->
 [![DOI](https://zenodo.org/badge/571841941.svg)](https://zenodo.org/badge/latestdoi/571841941)
-<a href="https://github.com/akshat22/campus-job-review-system/blob/main/LICENSE"><img 
+<a href="https://github.com/akshat22/campus-job-review-system/blob/main/LICENSE"><img                                              
 alt="License" src="https://img.shields.io/github/license/akshat22/campus-job-review-system"></a>
 [![GitHub Release](https://img.shields.io/github/release/akshat22/campus-job-review-system.svg)](https://github.com/akshat22/campus-job-review-system/releases)
 [![code-coverage](https://img.shields.io/badge/code--coverage-62%25-green)](https://drive.google.com/file/d/1oO6JZ_l4851oo6Akqr53Kv9ANjqwhcnr/view?usp=share_link)
-[![Build](https://github.com/akshat22/campus-job-review-system/actions/workflows/check-commits.yml/badge.svg)](https://github.com/akshat22/campus-job-review-system/actions/workflows/check-commits.yml)
 [![GitHub contributors](https://img.shields.io/github/contributors/akshat22/campus-job-review-system)](https://github.com/akshat22/campus-job-review-system/graphs/contributors)
 [![Open Issues](https://img.shields.io/github/issues/akshat22/campus-job-review-system)](https://github.com/akshat22/campus-job-review-system/issues)
 ![Closed issues](https://img.shields.io/github/issues-closed/akshat22/campus-job-review-system?color=bright-green)
 [![Pull Requests](https://img.shields.io/github/issues-pr/akshat22/campus-job-review-system)](https://github.com/akshat22/campus-job-review-system)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
+
+[![Flake8 Config](https://img.shields.io/badge/config-.flake8-blue)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/.flake8)
 
 The Campus Job Review System is a Flask App which has a SQL database for storage. It is created using Python.This website allows NCSU students to read reviews of any job that is open on campus. The portal's objective is to assist students in better comprehending the job description and the work through the experiences of their fellow students. Students can post reviews on the website for others to read. The pupils' anonymity is preserved so they can submit candid evaluations. Furthermore, the website offers user account management, allowing users to store their Resume and contact details. Only that specific user can modify these details after logging in (using the Account Page).
 
@@ -43,15 +44,14 @@ https://user-images.githubusercontent.com/50794731/205819285-9d4875ed-172e-427c-
 ## Contribution Code of Conduct
 
 The rules listed below are to be followed by the ones who will be contributing to the code in the repository:
-  1)Follow the code quality standards 
-  2)Testing: For every new feature or bug fix, write unit tests to ensure code correctness.
-  Ensure existing tests pass: Run all tests before submitting a pull request (PR) to ensure no existing functionality is broken.
-  Follow test coverage requirements: Aim to meet or exceed the project’s test coverage targets.
-  3)Keep commits small and relevant to a single task or fix. Write clear commit messages (e.g., "Fix issue with X" or "Add feature Y").
-  4)Use Markdown: Follow any guidelines for Markdown formatting and structuring of documentation files (e.g., README.md, CONTRIBUTING.md).
-  5) Branches: Use separate branches when and where needed.
-  6) Security and Confidentiality
-    Handle sensitive information carefully: Avoid hardcoding sensitive information, such as API keys or passwords. Use environment variables or secure configuration files.
+  1)Follow the code quality standards <br>
+  2)Testing: For every new feature or bug fix, write unit tests to ensure code correctness.<br>
+  Ensure existing tests pass: Run all tests before submitting a pull request (PR) to ensure no existing functionality is broken.<br>
+  Follow test coverage requirements: Aim to meet or exceed the project’s test coverage targets.<br>
+  3)Keep commits small and relevant to a single task or fix. Write clear commit messages (e.g., "Fix issue with X" or "Add feature Y").<br>
+  4)Use Markdown: Follow any guidelines for Markdown formatting and structuring of documentation files (e.g., README.md, CONTRIBUTING.md).<br>
+  5) Branches: Use separate branches when and where needed.<br>
+  6)Handle sensitive information carefully: Avoid hardcoding sensitive information, such as API keys or passwords. Use environment variables or secure configuration files. <br>
     Follow secure coding practices: Be mindful of security implications in your code (e.g., SQL injection, cross-site scripting).
   
 
