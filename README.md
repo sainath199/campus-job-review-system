@@ -18,10 +18,7 @@
 
 
 
-![Black](https://img.shields.io/badge/code%20style-black-000000)
-
-
-[![code-coverage](https://img.shields.io/badge/code--coverage-64%25-green)](test_coverage.jpg)
+![Black](https://img.shields.io/badge/code%20style-black-000000) [![code-coverage](https://img.shields.io/badge/code--coverage-64%25-green)](test_coverage.jpg)
 
 [![GitHub contributors](https://img.shields.io/github/contributors/Fall-2024-SE-Group/campus-job-review-system)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/graphs/contributors)
 
