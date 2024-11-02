@@ -17,7 +17,7 @@ alt="License" src="https://img.shields.io/github/license/![image](https://github
 /releases)
 
 
-![Prettier](https://img.shields.io/badge/code%20style-prettier-ff69b4)
+![Black](https://img.shields.io/badge/code%20style-black-000000)
 
 
 [![code-coverage](https://img.shields.io/badge/code--coverage-62%25-green)](https://drive.google.com/file/d/1oO6JZ_l4851oo6Akqr53Kv9ANjqwhcnr/view?usp=share_link)
