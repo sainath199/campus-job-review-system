@@ -76,7 +76,7 @@ The rules listed below are to be followed by the ones who will be contributing t
 
 ### Chat Channel Screenshot
 
-![image](https://github.com/user-attachments/assets/551893e3-68f2-4cbf-ad94-91b290f475ba)
+![image](chat_image)
 
 
 ## Deployment
