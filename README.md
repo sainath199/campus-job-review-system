@@ -7,7 +7,7 @@
 -->
 
 
-[![DOI](https://zenodo.org/badge/DOI/14027357.svg)](https://zenodo.org/badge/latestdoi/14027357)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14027357.svg)](https://doi.org/10.5281/zenodo.14027357)
 
 <a href="https://github.com/![image](https://github.com/user-attachments/assets/8ec674e2-4e99-4025-a651-82736b866a24)
 /blob/main/LICENSE"><img                                              
