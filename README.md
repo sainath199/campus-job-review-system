@@ -53,7 +53,7 @@ https://user-images.githubusercontent.com/50794731/205819285-9d4875ed-172e-427c-
 
 
 ## Poster for Stage 1
-![alt text](https://github.com/ashishjoshi2605/ncsu-campus-jobs-review-system/blob/main/app/static/Poster.jpg)
+![alt text](https://github.com/andre-motta/CSC-510-Fall2024-ProjectPosters/blob/main/Posters/Group30/Group30_Poster1.pdf)
 
 ## Contribution Code of Conduct
 
@@ -80,7 +80,7 @@ The rules listed below are to be followed by the ones who will be contributing t
 
 
 ## Deployment
-We have deployed our website [here](http://44.204.178.112:5000/)
+We have deployed our website [here](http://127.0.0.1:5000/)
 
 ## Contributors
 
