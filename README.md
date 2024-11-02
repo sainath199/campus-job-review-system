@@ -67,7 +67,7 @@ The rules listed below are to be followed by the ones who will be contributing t
 
 ### Chat Channel Screenshot
 
-![alt text]([campus-job-review-system/Screenshot 2024-11-01 213341.png](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/Screenshot%202024-11-01%20213341.png))
+![alt text]([![image](https://github.com/user-attachments/assets/0ad2eb88-b16f-4887-abbf-02bd63a311a6)))
 
 ## Deployment
 We have deployed our website [here](http://44.204.178.112:5000/)
