@@ -1,7 +1,89 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container mt-5">
-        <h1>About Us</h1>
-        <p>Here you can provide information about your application, its purpose, and its creators.</p>
+
+<div class="container mt-5">
+    <h1 class="text-center" style="color: white;">About Us</h1>
+    <p class="text-center" style="color: white;">Welcome to our campus job portal! We are dedicated to connecting students with job opportunities and providing a seamless experience for both employers and applicants.</p>
+
+    <div class="mt-4">
+        <h2 style="color: white;">Our Mission</h2>
+        <p style="color: white;">Our mission is to empower students to discover job opportunities that align with their skills and interests while providing employers with access to the best talent available on campus. Together, we create a vibrant community that thrives on collaboration and mutual support.</p>
     </div>
+
+    <div class="mt-4">
+        <h2 style="color: white;">Features of Our Campus Job Portal</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card" style="border: 1px solid #007bff; background-color: #495057;">
+                    <div class="card-body text-center">
+                        <span style="font-size: 2rem; color: #007bff;">🔍</span>
+                        <h5 style="font-weight: bold; color: white;">Tailored Job Recommendations</h5>
+                        <p style="color: white;">Find jobs that fit your schedule and skills effortlessly! Our intelligent filtering options allow you to explore job listings based on your preferences, and you can read honest reviews and ratings from fellow students who have worked in these positions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card" style="border: 1px solid #007bff; background-color: #495057;">
+                    <div class="card-body text-center">
+                        <span style="font-size: 2rem; color: #007bff;">📝</span>
+                        <h5 style="font-weight: bold; color: white;">Job Posting Page</h5>
+                        <p style="color: white;">Employers can easily list available positions on our dedicated job posting page. This streamlined process makes it convenient for organizations to reach out to potential candidates and helps students discover exciting opportunities.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card" style="border: 1px solid #007bff; background-color: #495057;">
+                    <div class="card-body text-center">
+                        <span style="font-size: 2rem; color: #007bff;">🔒</span>
+                        <h5 style="font-weight: bold; color: white;">Admin Functionality</h5>
+                        <p style="color: white;">We prioritize safety and trust within our platform. Our enhanced admin capabilities allow for the swift addition or removal of fraudulent job postings, ensuring that all opportunities listed are legitimate and reliable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card" style="border: 1px solid #007bff; background-color: #495057;">
+                    <div class="card-body text-center">
+                        <span style="font-size: 2rem; color: #007bff;">👤</span>
+                        <h5 style="font-weight: bold; color: white;">User Account Profile Management</h5>
+                        <p style="color: white;">Manage your profile with ease! Users can add or update their candidate information and upload their resumes directly on the platform, making it simple to showcase their skills and experiences to prospective employers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2 style="color: white;">Our Team</h2>
+        <p style="color: white;">We are a passionate team of individuals with diverse backgrounds in technology, education, and human resources. Together, we strive to improve the job search process for students and companies alike.</p>
+
+        <h3 style="color: white;">Meet Our Team Members</h3>
+        <table class="table table-bordered mt-3" style="background-color: #495057;">
+            <thead>
+                <tr>
+                    <th style="color: white;">Name</th>
+                    <th style="color: white;">Email ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: white;">Surabhi Ravindran Nair</td>
+                    <td style="color: white;">snair3@ncsu.edu</td>
+                </tr>
+                <tr>
+                    <td style="color: white;">Sreeja Nukarapu</td>
+                    <td style="color: white;">snukara@ncsu.edu</td>
+                </tr>
+                <tr>
+                    <td style="color: white;">Aarthi Hasitha Yepuri</td>
+                    <td style="color: white;">ayepuri@ncsu.edu</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-4">
+        <h2 style="color: white;">Contact Us</h2>
+        <p style="color: white;">If you have any questions or feedback, feel free to reach out to us via our <a href="/contact" class="btn btn-link" style="color: #007bff;">Contact Page</a>. We value your input and strive to enhance your experience on our platform!</p>
+    </div>
+</div>
 {% endblock content %}
