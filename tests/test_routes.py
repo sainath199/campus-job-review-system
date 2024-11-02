@@ -332,6 +332,7 @@ def test_view_nonexistent_job(client):
     assert response.status_code == 404
 
 def create_test_jobs():
+    # Create sample job entries for testing
     job1 = Vacancies(
         jobTitle="Data Scientist", 
         jobDescription="Analyze data and build models", 
@@ -346,8 +347,16 @@ def create_test_jobs():
         jobPayRate="120000", 
         maxHoursAllowed=45
     )
+    job3 = Vacancies(
+        jobTitle="Product Manager", 
+        jobDescription="Manage product development", 
+        jobLocation="Remote", 
+        jobPayRate="95000", 
+        maxHoursAllowed=40
+    )
     db.session.add(job1)
     db.session.add(job2)
+    db.session.add(job3)
     db.session.commit()
 
 def test_filter_by_pay_rate(client):
@@ -366,4 +375,12 @@ def test_filter_by_location(client):
     create_test_jobs()  # Ensure jobs are created
 
     response = client.get('/job_listings?location=San Francisco')  # Adjust URL to match your route
+    assert b'Software Engineer' in response.data  # Check for the job title
+
+def test_filter_by_job_title(client):
+    create_test_jobs()  # Ensure jobs are created
+
+    response = client.get('/job_listings?job_title=Product Manager')  # Adjust URL to match your route
+    assert b'Product Manager' in response.data  # Check for the job title
+    response = client.get('/job_listings?job_title=Software')  # Adjust URL to match your route
     assert b'Software Engineer' in response.data  # Check for the job title
