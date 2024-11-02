@@ -8,8 +8,7 @@
 <a href="https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/LICENSE">
   <img alt="License" src="https://img.shields.io/github/license/Fall-2024-SE-Group/campus-job-review-system">
 </a>
-[![GitHub Release](https://img.shields.io/github/release/Fall-2024-SE-Group/campus-job-review-system.svg)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/releases)
-![Black](https://img.shields.io/badge/code%20style-black-000000) [![code-coverage](https://img.shields.io/badge/code--coverage-64%25-green)](test_coverage.jpg)
+[![GitHub Release](https://img.shields.io/github/release/Fall-2024-SE-Group/campus-job-review-system.svg)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/releases) [![code-coverage](https://img.shields.io/badge/code--coverage-64%25-green)](test_coverage.jpg)
 [![GitHub contributors](https://img.shields.io/github/contributors/Fall-2024-SE-Group/campus-job-review-system)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/graphs/contributors)
 [![Open Issues](https://img.shields.io/github/issues/Fall-2024-SE-Group/campus-job-review-system)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/issues)
 ![Closed issues](https://img.shields.io/github/issues-closed/Fall-2024-SE-Group/campus-job-review-system?color=bright-green)
