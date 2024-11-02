@@ -158,7 +158,73 @@ def test_delete_review_admin(client):
 def test_review_pagination(client):
     response = client.get("/review/all?page=2")
     assert response.status_code == 200
+def test_dashboard_route(client):
+    response = client.get('/dashboard')
+    assert response.status_code == 200
 
+def test_account_route(client):
+    response = client.get('/account')
+    assert response.status_code == 302
+
+def test_admin_access_denied(client):
+    # Manually log in as a regular user
+    client.post("/login", data={"email": "regularuser@example.com", "password": "userpass"})
+    response = client.get("/admin/dashboard")
+    assert response.status_code == 302
+    assert '/login' in response.headers['Location'] 
+
+def test_register_existing_email(client):
+    # Register the first time
+    response1 = client.post("/register", data={
+        "username": "newuser",
+        "email": "test1@example.com",
+        "password": "password",
+        "confirm_password": "password",
+        "is_admin": False
+    })
+    assert response1.status_code == 200
+    
+    # Try to register again with the same email
+    response2 = client.post("/register", data={
+        "username": "newuser2",
+        "email": "existing@example.com",  # Same email as before
+        "password": "password",
+        "confirm_password": "password",
+        "is_admin": False
+    })
+    assert response1.status_code == 200 
+
+
+def test_view_nonexistent_review(client):
+    response = client.get("/review/999")
+    assert response.status_code == 404
+
+def test_edit_review_forbidden(client):
+    # Manually log in a regular user
+    client.post("/login", data={"email": "regularuser@example.com", "password": "userpass"})
+    # Attempt to edit a review as a regular user (should be forbidden)
+    response = client.post("/review/1/update", data={"review": "Updated review content"})
+    assert response.status_code == 302 #redirected to the login.html page again
+
+
+def test_delete_review_admin(client):
+    # Manually log in as an admin
+    client.post("/login", data={"email": "admin@example.com", "password": "adminpass"})
+    response = client.post("/review/1/delete")
+    assert response.status_code == 302
+
+def test_review_pagination(client):
+    response = client.get("/review/all?page=2")
+    assert response.status_code == 200
+
+def test_delete_job_admin(client):
+    # Manually log in as an admin
+    client.post("/login", data={"email": "admin@example.com", "password": "adminpass"})
+    response = client.post("/delete-job/1")
+    assert response.status_code == 302
+
+def test_empty_job_listing(client):
+    response = client.get("/dashboard")
 def test_delete_job_admin(client):
     # Manually log in as an admin
     client.post("/login", data={"email": "admin@example.com", "password": "adminpass"})
