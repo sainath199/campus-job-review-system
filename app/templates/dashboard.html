@@ -1,92 +1,122 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container-fluid banner2 text-center">
-        <h1 class="text-center bold">Part Time Job Listings</h1>
-        
-        <form method="GET" action="{{ url_for('job_listings') }}">
-            <div class="input-group mb-3">
-                <input type="text" name="search" class="form-control" placeholder="Search by Job Title" aria-label="Job Title" aria-describedby="button-addon2">
-                <input type="text" name="jobLocation" class="form-control" placeholder="Location" aria-label="Job Location">
-                
-                <!-- Dropdown for Pay Rate -->
-                <select name="payRate" class="form-select" aria-label="Pay Rate">
-                    <option value="">Select Pay Rate</option>
-                    <option value="10">Up to $10</option>
-                    <option value="15">Up to $15</option>
-                    <option value="20">Up to $20</option>
-                    <option value="25">Up to $25</option>
-                    <option value="30">Up to $30</option>
-                    <option value="30+">Above $30</option>
-                </select>
-        
-                <!-- Dropdown for Maximum Working Hours Allowed -->
-                <select name="maxHoursAllowed" class="form-select" aria-label="Maximum Working Hours Allowed">
-                    <option value="">Select Max Hours</option>
-                    <option value="10">Up to 10 Hours</option>
-                    <option value="20">Up to 20 Hours</option>
-                    <option value="30">Up to 30 Hours</option>
-                    <option value="40">Up to 40 Hours</option>
-                    <option value="40+">More than 40 Hours</option>
-                </select>
-        
-                <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
-            </div>
-        </form>
-        
-
-        <div class="col-md-12 text-right">
-            <button
-                type="button"
-                class="btn btn-danger btn-lg"
-                onclick="window.location.href='{{ url_for('post_job') }}';"
-            >Post a Job</button>
+<div class="container-fluid banner2 text-center">
+    <h1 class="text-center bold">Part Time Job Listings</h1>
+    
+    <!-- Job Review Analytics Section -->
+    <div class="job-analytics mt-4 mb-4 text-center">
+        <h3>Job Review Analytics</h3>
+        <table class="table table-bordered text-center" style="background-color: #f8f9fa; color: #212529;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Job Title</th>
+                    <th>Total Reviews</th>
+                    <th>Positive Reviews</th>
+                    <th>Negative Reviews</th>
+                    <th>Average Rating</th>
+                    <th>Job Score (Out of 5)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in job_statistics %}
+                <tr>
+                    <td>{{ job.job_title }}</td>
+                    <td>{{ job.total_reviews }}</td>
+                    <td>{{ job.positive_reviews }}</td>
+                    <td>{{ job.negative_reviews }}</td>
+                    <td>{{ job.average_rating }}</td>
+                    <td>{{ job.job_score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- End Job Review Analytics Section -->
+    
+    <form method="GET" action="{{ url_for('job_listings') }}">
+        <div class="input-group mb-3">
+            <input type="text" name="search" class="form-control" placeholder="Search by Job Title" aria-label="Job Title" aria-describedby="button-addon2">
+            <input type="text" name="jobLocation" class="form-control" placeholder="Location" aria-label="Job Location">
+            
+            <!-- Dropdown for Pay Rate -->
+            <select name="payRate" class="form-select" aria-label="Pay Rate">
+                <option value="">Select Pay Rate</option>
+                <option value="10">Up to $10</option>
+                <option value="15">Up to $15</option>
+                <option value="20">Up to $20</option>
+                <option value="25">Up to $25</option>
+                <option value="30">Up to $30</option>
+                <option value="30+">Above $30</option>
+            </select>
+    
+            <!-- Dropdown for Maximum Working Hours Allowed -->
+            <select name="maxHoursAllowed" class="form-select" aria-label="Maximum Working Hours Allowed">
+                <option value="">Select Max Hours</option>
+                <option value="10">Up to 10 Hours</option>
+                <option value="20">Up to 20 Hours</option>
+                <option value="30">Up to 30 Hours</option>
+                <option value="40">Up to 40 Hours</option>
+                <option value="40+">More than 40 Hours</option>
+            </select>
+    
+            <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
         </div>
-        <br>
+    </form>
 
-        <div id="vacancy-results" class="table-responsive justify-content-between">
-            {% if vacancies %}
-                <table class="table table-striped table-bordered border border-white table-vcenter">
-                    <thead class="thead-dark">
+    <div class="col-md-12 text-right">
+        <button
+            type="button"
+            class="btn btn-danger btn-lg"
+            onclick="window.location.href='{{ url_for('post_job') }}';"
+        >Post a Job</button>
+    </div>
+    <br>
+
+    <div id="vacancy-results" class="table-responsive justify-content-between">
+        {% if vacancies %}
+            <table class="table table-striped table-bordered border border-white table-vcenter" style="background-color: #f8f9fa; color: #212529;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Job Title</th>
+                        <th scope="col">Job Description</th>
+                        <th scope="col">Job Location</th>
+                        <th scope="col">Pay Rate</th>
+                        <th scope="col">Maximum Working Hours Allowed</th>
+                        <th scope="col">More Information</th>
+                        {% if current_user.is_admin %}
+                            <th scope="col">Action</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody id="vacancy-table" class="text-dark tbl-accordion-header">
+                    {% for vacancy in vacancies %}
                         <tr>
-                            <th scope="col">Job Title</th>
-                            <th scope="col">Job Description</th>
-                            <th scope="col">Job Location</th>
-                            <th scope="col">Pay Rate</th>
-                            <th scope="col">Maximum Working Hours Allowed</th>
-                            <th scope="col">More Information</th>
+                            <td scope="row"><strong>{{ vacancy.jobTitle }}</strong></td>
+                            <td scope="row">{{ vacancy.jobDescription }}</td>
+                            <td scope="row">{{ vacancy.jobLocation }}</td>
+                            <td scope="row">{{ vacancy.jobPayRate }}</td>
+                            <td scope="row">{{ vacancy.maxHoursAllowed }}</td>
+                            <td scope="row"><a href="https://campusenterprises.ncsu.edu/dept/hr/opportunities/student/">Click Here For More Information</a></td>
                             {% if current_user.is_admin %}
-                                <th scope="col">Action</th>
-                            {% endif %}
+                                <td scope="row">
+                                    <form action="{{ url_for('delete_job', job_id=vacancy.vacancyId) }}" method="POST">
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this job posting?');">Delete</button>
+                                    </form>
+                                </td>
+                            {% endif %}                            
                         </tr>
-                    </thead>
-                    <tbody id="vacancy-table" class="text-white tbl-accordion-header">
-                        {% for vacancy in vacancies %}
-                            <tr>
-                                <td scope="row"><strong>{{ vacancy.jobTitle }}</strong></td>
-                                <td scope="row">{{ vacancy.jobDescription }}</td>
-                                <td scope="row">{{ vacancy.jobLocation }}</td>
-                                <td scope="row">{{ vacancy.jobPayRate }}</td>
-                                <td scope="row">{{ vacancy.maxHoursAllowed }}</td>
-                                <td scope="row"><a href="https://campusenterprises.ncsu.edu/dept/hr/opportunities/student/">Click Here For More Information</a></td>
-                                {% if current_user.is_admin %}
-                                    <td scope="row">
-                                        <form action="{{ url_for('delete_job', job_id=vacancy.vacancyId) }}" method="POST">
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this job posting?');">Delete</button>
-                                        </form>
-                                    </td>
-                                {% endif %}                            
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <div class="alert alert-info text-center" role="alert">
-                    <i class="fas fa-info-circle me-2"></i>
-                    <strong>Oops! No job vacancies found.</strong>
-                    <p>Check back later or try a different search to find the perfect part-time opportunity.</p>
-                    <p>Need assistance? Reach out to us at <a href="mailto:group_30_SE@gmail.com">support@ourproject.com</a></p>
-                </div>
-            {% endif %}
-        </div>
-
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-info text-center" role="alert">
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>Oops! No job vacancies found.</strong>
+                <p>Check back later or try a different search to find the perfect part-time opportunity.</p>
+                <p>Need assistance? Reach out to us at <a href="mailto:group_30_SE@gmail.com">support@ourproject.com</a></p>
+            </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
+

@@ -4,6 +4,7 @@ from app.models import Reviews, Vacancies, User
 from app.forms import RegistrationForm, LoginForm, ReviewForm, JobPostingForm, UpdateAccountForm, ResumeUploadForm
 from flask_login import login_user, current_user, logout_user, login_required
 from functools import wraps
+from crudapp import get_all_jobs_statistics
 from werkzeug.utils import secure_filename
 import os
 
@@ -30,6 +31,15 @@ def admin_required(f):
             abort(403)  # Forbidden access
         return f(*args, **kwargs)
     return decorated_function
+
+@app.route('/apply/<int:vacancy_id>', methods=['POST'])
+@login_required
+def apply_job(vacancy_id):
+    # Assuming current_user.id gives the logged-in user's ID
+    log_user_activity(user_id=current_user.id, vacancy_id=vacancy_id, status='applied')
+    flash('Application submitted successfully!', 'success')
+    return redirect(url_for('dashboard'))
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -313,14 +323,10 @@ def update_review(review_id):
 
 
 @app.route("/dashboard")
-def getVacantJobs():
-    """
-    An API for the users to see all the available vacancies and their details
-    """
-    vacancies = Vacancies.query.all()
-    return render_template("dashboard.html", vacancies=vacancies)
-
-
+@login_required
+def dashboard():
+    job_statistics = get_all_jobs_statistics()
+    return render_template('dashboard.html', job_statistics=job_statistics)
 
 @app.route("/job_listings", methods=['GET'])
 def job_listings():
