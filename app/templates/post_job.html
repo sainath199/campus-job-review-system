@@ -2,34 +2,50 @@
 {% block content %}
 <div class="container-fluid banner2">
     <div class="content-section">
-        <h1>Post a Job</h1>
+        <h1 class="mb-4">Post a Job</h1>
         <form action="{{ url_for('post_job') }}" method="POST">
+            <!-- CSRF Token -->
             {{ form.csrf_token }}
+
+            <!-- Job Title -->
             <div class="form-group">
                 <label for="jobTitle">Job Title</label>
-                {{ form.jobTitle(class="form-control", id="jobTitle") }}
+                {{ form.jobTitle(class="form-control", id="jobTitle", placeholder="Enter job title") }}
             </div>
+
+            <!-- Job Description -->
             <div class="form-group">
                 <label for="jobDescription">Job Description</label>
-                {{ form.jobDescription(class="form-control", id="jobDescription") }}
+                {{ form.jobDescription(class="form-control", id="jobDescription", placeholder="Enter job description") }}
             </div>
+
+            <!-- Pay Rate -->
             <div class="form-group">
                 <label for="jobPayRate">Pay Rate</label>
-                {{ form.jobPayRate(class="form-control", id="jobPayRate") }}
+                {{ form.jobPayRate(class="form-control", id="jobPayRate", placeholder="Enter pay rate") }}
             </div>
+
+            <!-- Job Location -->
             <div class="form-group">
                 <label for="jobLocation">Location</label>
-                {{ form.jobLocation(class="form-control", id="jobLocation") }}
+                {{ form.jobLocation(class="form-control", id="jobLocation", placeholder="Enter job location") }}
             </div>
+
+            <!-- Maximum Working Hours Allowed -->
             <div class="form-group">
                 <label for="maxHoursAllowed">Maximum Working Hours Allowed</label>
-                {{ form.maxHoursAllowed(class="form-control", id="maxHoursAllowed") }}
+                {{ form.maxHoursAllowed(class="form-control", id="maxHoursAllowed", placeholder="Enter max working hours allowed") }}
             </div>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+
+            <!-- Submit Button -->
+            <div class="form-group mt-4">
+                {{ form.submit(class="btn btn-primary") }}
             </div>
         </form>
+
+        <!-- Back to Home Button -->
         <a href="{{ url_for('home') }}" class="btn btn-secondary mt-3">Back to Home</a>
     </div>
-    </div>
-{% endblock content %}
+</div>
+{% endblock %}
+

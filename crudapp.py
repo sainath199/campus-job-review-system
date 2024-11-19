@@ -1,6 +1,22 @@
 from app import db
 from sqlalchemy.sql import func
-from app.models import Reviews, Vacancies
+from app.models import Reviews, Vacancies 
+from datetime import datetime
+from app.models import Notification, User
+
+def notify_users_about_new_job(job_title):
+    """
+    Create notifications for all users about a newly posted job.
+    """
+    users = User.query.all()  # Fetch all users
+    message = f"A new job titled '{job_title}' has been posted. Check it out!"
+
+    for user in users:
+        notification = Notification(user_id=user.id, message=message, timestamp=datetime.utcnow())
+        db.session.add(notification)
+
+    db.session.commit()
+    print(f"Notifications created for {len(users)} users.")
 
 def get_all_jobs_statistics():
     """

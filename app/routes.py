@@ -5,6 +5,9 @@ from app.forms import RegistrationForm, LoginForm, ReviewForm, JobPostingForm, U
 from flask_login import login_user, current_user, logout_user, login_required
 from functools import wraps
 from crudapp import get_all_jobs_statistics
+from crudapp import notify_users_about_new_job
+from app.models import Notification
+
 from werkzeug.utils import secure_filename
 import os
 
@@ -39,6 +42,69 @@ def apply_job(vacancy_id):
     log_user_activity(user_id=current_user.id, vacancy_id=vacancy_id, status='applied')
     flash('Application submitted successfully!', 'success')
     return redirect(url_for('dashboard'))
+
+
+@app.route("/notifications/mark_read", methods=["POST"])
+@login_required
+def mark_notifications_read():
+    notifications = Notification.query.filter_by(user_id=current_user.id, is_read=False).all()
+    for notification in notifications:
+        notification.is_read = True
+    db.session.commit()
+    flash("All notifications marked as read.", "success")
+    return redirect(url_for("notifications"))
+
+
+
+@app.route("/post_job", methods=["GET", "POST"])
+@login_required
+def post_job():
+    form = JobPostingForm()
+    if request.method == "POST" and form.validate_on_submit():
+        job_title = form.jobTitle.data
+        job_description = form.jobDescription.data
+        job_location = form.jobLocation.data
+        pay_rate = float(form.jobPayRate.data)
+        max_hours_allowed = form.maxHoursAllowed.data
+
+        # Create the new job
+        new_job = Vacancies(job_title, job_description, job_location, pay_rate, max_hours_allowed)
+        db.session.add(new_job)
+        db.session.commit()
+
+        # Notify all users about the new job
+        notify_users_about_new_job(job_title)
+
+        flash("Job posted successfully and notifications created!", "success")
+        return redirect(url_for("dashboard"))
+
+    return render_template("post_job.html", form=form)
+
+@app.route("/check_notifications", methods=["GET"])
+@login_required
+def check_notifications():
+    unread_count = Notification.query.filter_by(user_id=current_user.id, is_read=False).count()
+    return {"unread_count": unread_count}, 200
+
+
+@app.route("/notifications", methods=["GET", "POST"])
+@login_required
+def notifications():
+    user_notifications = Notification.query.filter_by(user_id=current_user.id).order_by(Notification.timestamp.desc()).all()
+    # Mark all notifications as read
+    for notification in user_notifications:
+        notification.is_read = True
+    db.session.commit()
+    return render_template("notifications.html", notifications=user_notifications)
+
+
+@app.context_processor
+def inject_notifications_count():
+    if current_user.is_authenticated:
+        unread_notifications_count = Notification.query.filter_by(user_id=current_user.id, is_read=False).count()
+    else:
+        unread_notifications_count = 0
+    return dict(unread_notifications_count=unread_notifications_count)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -151,31 +217,6 @@ def view_reviews():
     entries = Reviews.query.all()
     return render_template("view_reviews.html", entries=entries)
 
-@app.route("/post-job", methods=["GET", "POST"])
-@login_required
-def post_job():
-    if not current_user.is_admin:  # Check if the current user is not an admin
-        return abort(403)
-    form = JobPostingForm()
-    if form.validate_on_submit():
-        print("Form validated successfully.")
-        new_job = Vacancies(
-            jobTitle=form.jobTitle.data,
-            jobDescription=form.jobDescription.data,
-            jobLocation=form.jobLocation.data,
-            jobPayRate=float(form.jobPayRate.data),
-            maxHoursAllowed=form.maxHoursAllowed.data,
-        )
-        
-        db.session.add(new_job)
-        db.session.commit()
-        flash(
-            "Job posted successfully!", "success"
-        )
-        return redirect(url_for("getVacantJobs"))
-    else:
-        print("Form errors:",form.errors)
-    return render_template("post_job.html", form=form)
 
 @app.route("/account", methods=["GET", "POST"])
 @login_required

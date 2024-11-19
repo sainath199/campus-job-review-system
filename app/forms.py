@@ -1,6 +1,5 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-
 from wtforms import (
     StringField,
     PasswordField,
@@ -9,29 +8,33 @@ from wtforms import (
     IntegerField,
     RadioField,
     TextAreaField,
-    DecimalField
+    FloatField
 )
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange
 from app.models import User
+
 
 class UpdateAccountForm(FlaskForm):
     """Form for updating account details."""
     username = StringField('Name', validators=[DataRequired(), Length(min=2, max=50)])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    contact_info = StringField("Contact Info", validators=[Length(max=255)])  # Add this line
+    contact_info = StringField("Contact Info", validators=[Length(max=255)])
+    address = StringField("Address", validators=[Length(max=255)])
     submit = SubmitField('Update Account')
-    address=StringField("Address",validators=[Length(max=255)])
 
 
 class JobPostingForm(FlaskForm):
+    """Form for posting a job."""
     jobTitle = StringField("Job Title", validators=[DataRequired(), Length(min=2, max=100)])
     jobDescription = TextAreaField("Job Description", validators=[DataRequired()])
-    jobPayRate = DecimalField("Pay Rate", validators=[DataRequired()], places=2, rounding=None)
+    jobPayRate = FloatField("Pay Rate", validators=[DataRequired(), NumberRange(min=0, message="Pay rate must be a positive number.")])
     jobLocation = StringField("Location", validators=[Length(max=100)])
-    maxHoursAllowed = IntegerField("Maximum Working Hours Allowed")
+    maxHoursAllowed = IntegerField("Maximum Working Hours Allowed", validators=[DataRequired(), NumberRange(min=1, message="Hours must be at least 1.")])
     submit = SubmitField("Post Job")
 
+
 class RegistrationForm(FlaskForm):
+    """Form for user registration."""
     username = StringField("Username", validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField("Email", validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators=[DataRequired()])
@@ -42,9 +45,7 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            raise ValidationError(
-                "The username is taken. Please choose a different username."
-            )
+            raise ValidationError("The username is taken. Please choose a different username.")
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
@@ -53,6 +54,7 @@ class RegistrationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
+    """Form for user login."""
     email = StringField("Email", validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators=[DataRequired()])
     remember = BooleanField("Remember Me")
@@ -60,6 +62,7 @@ class LoginForm(FlaskForm):
 
 
 class ReviewForm(FlaskForm):
+    """Form for submitting job reviews."""
     department = StringField("Department", validators=[DataRequired()])
     locations = StringField("Location", validators=[DataRequired()])
     job_title = StringField("Job Title", validators=[DataRequired()])
@@ -68,27 +71,28 @@ class ReviewForm(FlaskForm):
     benefits = StringField("Benefits", validators=[DataRequired()])
     review = TextAreaField("Review", validators=[DataRequired()])
     rating = RadioField(
-        "Rating",
+        "Rating (1 is lowest, 5 is highest)",
         validators=[DataRequired()],
-        choices=[(1, "1"), (2, "2"), (3, "3"), (4, "4"), (5, "5")],
+        choices=[("1", "1"), ("2", "2"), ("3", "3"), ("4", "4"), ("5", "5")],
     )
     recommendation = RadioField(
-        "Recommendation",
+        "Recommendation (1 is lowest, 10 is highest)",
         validators=[DataRequired()],
         choices=[
-            (1, "1"),
-            (2, "2"),
-            (3, "3"),
-            (4, "4"),
-            (5, "5"),
-            (6, "6"),
-            (7, "7"),
-            (8, "8"),
-            (9, "9"),
-            (10, "10"),
+            ("1", "1"),
+            ("2", "2"),
+            ("3", "3"),
+            ("4", "4"),
+            ("5", "5"),
+            ("6", "6"),
+            ("7", "7"),
+            ("8", "8"),
+            ("9", "9"),
+            ("10", "10"),
         ],
     )
     submit = SubmitField("Submit your review")
+
 
 class UserProfileForm(FlaskForm):
     """Form for updating user profile information."""
@@ -97,7 +101,9 @@ class UserProfileForm(FlaskForm):
     address = StringField("Address", validators=[Length(max=255)])
     submit = SubmitField("Update Profile")
 
+
 class ResumeUploadForm(FlaskForm):
     """Form for uploading resumes."""
-    resume= FileField("Upload Resume", validators=[DataRequired(), FileAllowed(['pdf', 'doc', 'docx'], 'Documents only!')])
-    submit = SubmitField("Upload Resume")
+    resume = FileField("Upload Resume", validators=[DataRequired(), FileAllowed(['pdf', 'doc', 'docx'], 'Documents only!')])
+    submit = SubmitField("Upload Resume")
+

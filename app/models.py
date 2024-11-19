@@ -7,6 +7,13 @@ from datetime import datetime
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+class Notification(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    message = db.Column(db.String(255), nullable=False)
+    is_read = db.Column(db.Boolean, default=False)  # Track if the notification has been read
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 class Reviews(db.Model):
     """Model which stores the information of the reviews submitted"""

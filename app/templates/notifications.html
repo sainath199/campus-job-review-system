@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Your Notifications</h1>
+    <ul class="list-group">
+        {% for notification in notifications %}
+            <li class="list-group-item {{ 'list-group-item-secondary' if notification.is_read else 'list-group-item-primary' }}">
+                {{ notification.message }}
+                <small class="text-muted float-right">{{ notification.timestamp }}</small>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+

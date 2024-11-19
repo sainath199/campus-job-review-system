@@ -4,21 +4,58 @@
         <meta charset="utf-8">
         <meta name="viewreport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
         <title>
             NCSU Campus Job
         </title>
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='/css/index.css')}}" />
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        
+        <style>
+            /* Styling for the bell icon and badge */
+            .notification-icon {
+                color: red; /* Red bell icon */
+                font-size: 1.5rem; /* Larger size */
+                position: relative; /* Position for the badge */
+            }
+
+            .notification-icon .badge {
+                position: absolute;
+                top: -5px;
+                right: -10px;
+                background-color: red;
+                color: white;
+                border-radius: 50%;
+                font-size: 0.8rem;
+                padding: 3px 6px;
+                display: inline-block;
+            }
+
+            /* General page styles */
+            .banner {
+                background-color: #333;
+                color: white;
+                padding: 10px 0;
+            }
+
+            .nav-link {
+                color: white !important;
+            }
+
+            .nav-link:hover {
+                color: #ddd !important;
+            }
+
+            .main {
+                margin: 20px 0;
+            }
+        </style>
     </head>
     <body>
-
         <div class="container-fluid banner">
             <div class="row">
                 <div class="col-md-12">
@@ -36,7 +73,7 @@
                                     <a class="nav-link" href="/about">ABOUT</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/contact"">CONTACT</a>
+                                    <a class="nav-link" href="/contact">CONTACT</a>
                                 </li>
                                 {% if current_user.is_authenticated %}
                                     {% if current_user.is_admin %}
@@ -48,6 +85,15 @@
                                             <a class="nav-link" href="/account">ACCOUNT</a>
                                         </li>
                                     {% endif %}
+                                    <!-- Notification Bell -->
+                                    <li class="nav-item">
+                                        <a class="nav-link notification-icon" href="{{ url_for('notifications') }}">
+                                            <i class="fas fa-bell"></i>
+                                            {% if unread_notifications_count > 0 %}
+                                                <span class="badge">{{ unread_notifications_count }}</span>
+                                            {% endif %}
+                                        </a>
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/logout">LOGOUT</a>
                                     </li>
@@ -56,7 +102,6 @@
                                         <a class="nav-link" href="/login">LOGIN</a>
                                     </li>
                                 {% endif %}
-                                
                             </ul>
                         </nav>
                     </div>
@@ -78,5 +123,27 @@
             </div>
         </div>
 
+        <script>
+            setInterval(function() {
+                fetch('{{ url_for("check_notifications") }}')
+                    .then(response => response.json())
+                    .then(data => {
+                        const badge = document.querySelector('.notification-icon .badge');
+                        if (data.unread_count > 0) {
+                            if (!badge) {
+                                const newBadge = document.createElement('span');
+                                newBadge.className = 'badge';
+                                newBadge.textContent = data.unread_count;
+                                document.querySelector('.notification-icon').appendChild(newBadge);
+                            } else {
+                                badge.textContent = data.unread_count;
+                            }
+                        } else if (badge) {
+                            badge.remove();
+                        }
+                    });
+            }, 5000); // Poll every 5 seconds
+        </script>
     </body>
 </html>
+
