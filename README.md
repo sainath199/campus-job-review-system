@@ -72,7 +72,7 @@ The rules listed below are to be followed by the ones who will be contributing t
 
 ## Contributors
 
-- [Surabhi Nair](https://github.com/surabhi1914)
-- [Aarthi Hasitha Yepuri](https://github.com/Hasitha257)
-- [Sreeja Nukarapu](https://github.com/Sreeja-Nukarapu)
+- [Mona Sree Muppala](https://github.com/Monasree)
+- [Sainath Gorige](https://github.com/sainath199)
+- [Vishal Reddy Devireddy](https://github.com/vishalreddy2323)
 
