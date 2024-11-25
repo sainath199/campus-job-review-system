@@ -1,8 +1,7 @@
-from app import app
+from app import db
+from app.models import Reviews, Notification, User
 from sqlalchemy.sql import func
 from datetime import datetime
-from app.utils import notify_users_about_new_job, get_all_jobs_statistics
-
 
 def notify_users_about_new_job(job_title):
     """
@@ -33,7 +32,6 @@ def get_all_jobs_statistics():
         job_stats.append(stats)
 
     return job_stats
-
 
 def get_review_statistics(job_title):
     """
@@ -66,70 +64,3 @@ def get_review_statistics(job_title):
         "job_score": job_score,
     }
 
-
-
-def insertVacancyData():
-    Vacancies.query.delete()
-    createVacancies(
-        "Cashier",
-        "Cashier Job Description",
-        "Talley Student Union",
-        "9.25$ per hour",
-        15,
-    )
-    createVacancies(
-        "Application Developer",
-        "Developer Job Description",
-        "Venture IV",
-        "25$ per hour",
-        20,
-    )
-    createVacancies(
-        "Gym Trainer",
-        "Trainer Job Description",
-        "Talley Student Union",
-        "12.5$ per hour",
-        20,
-    )
-    createVacancies(
-        "Course Instructor",
-        "Course Instructor Description",
-        "Talley Student Union",
-        "9.5$ per hour",
-        18,
-    )
-    createVacancies(
-        "Course Grader",
-        "Course Grader Job Description",
-        "Talley Student Union",
-        "10.95$ per hour",
-        20,
-    )
-    createVacancies(
-        "Cleaner",
-        "Fountain Dining",
-        "Bragaww Hall",
-        "11.55$ per hour",
-        12)
-    createVacancies(
-        "Sports Instructor",
-        "Sports Instructor Description",
-        "Talley Student Union",
-        "12.75$ per hour",
-        16,
-    )
-
-
-def createVacancies(
-    jobTitle, jobDescription, jobLocation, payRate, maxHoursAllowed
-):  # create new user
-    newVacancy = Vacancies(
-        jobTitle, jobDescription, jobLocation, payRate, maxHoursAllowed
-    )
-    db.session.add(newVacancy)
-    db.session.commit()
-
-
-if __name__ == "__main__":
-    insertVacancyData()
-    app.run(debug=True)

@@ -4,9 +4,8 @@ from app.models import Reviews, Vacancies, User
 from app.forms import RegistrationForm, LoginForm, ReviewForm, JobPostingForm, UpdateAccountForm, ResumeUploadForm
 from flask_login import login_user, current_user, logout_user, login_required
 from functools import wraps
-from crudapp import get_all_jobs_statistics
-from crudapp import notify_users_about_new_job
 from app.models import Notification
+from app.utils import get_all_jobs_statistics, notify_users_about_new_job
 
 from werkzeug.utils import secure_filename
 import os

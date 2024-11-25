@@ -24,26 +24,34 @@
         crossorigin="anonymous"></script>
 
     <style>
-        /* Styling for the bell icon and badge */
-        .notification-icon {
-            color: red;
-            /* Red bell icon */
-            font-size: 1.5rem;
-            /* Larger size */
+        /* Styling for notification text */
+        .notification-text {
+            color: white !important;
+            /* Ensure text color contrasts with the background */
+            font-weight: bold;
+            /* Make it stand out */
+            font-size: 1.1rem;
+            /* Slightly larger font size */
             position: relative;
-            /* Position for the badge */
+            /* For badge positioning */
         }
 
-        .notification-icon .badge {
+        /* Styling the badge for notifications */
+        .notification-text .badge {
             position: absolute;
             top: -5px;
-            right: -10px;
+            right: -15px;
             background-color: red;
             color: white;
             border-radius: 50%;
             font-size: 0.8rem;
             padding: 3px 6px;
             display: inline-block;
+        }
+
+        /* Hover effect for better user feedback */
+        .notification-text:hover {
+            color: #ddd !important;
         }
 
         /* General page styles */
@@ -65,7 +73,7 @@
             margin: 20px 0;
         }
 
-        <style>.badge-success {
+        .badge-success {
             background-color: green;
             color: white;
             padding: 5px 10px;
@@ -86,10 +94,9 @@
             border-radius: 4px;
         }
 
-        .container_applied_jobs{
+        .container_applied_jobs {
             background-color: grey;
         }
-    </style>
     </style>
 </head>
 
@@ -123,10 +130,10 @@
                                 <a class="nav-link" href="/account">ACCOUNT</a>
                             </li>
                             {% endif %}
-                            <!-- Notification Bell -->
+                            <!-- Notification Link -->
                             <li class="nav-item">
-                                <a class="nav-link notification-icon" href="{{ url_for('notifications') }}">
-                                    <i class="fas fa-bell"></i>
+                                <a class="nav-link notification-text" href="{{ url_for('notifications') }}">
+                                    NOTIFICATIONS
                                     {% if unread_notifications_count > 0 %}
                                     <span class="badge">{{ unread_notifications_count }}</span>
                                     {% endif %}
@@ -135,7 +142,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/feedback">FEEDBACK</a> <!-- Feedback link added -->
                             </li>
-            
+
                             <li class="nav-item">
                                 <a class="nav-link" href="/logout">LOGOUT</a>
                             </li>
@@ -171,13 +178,13 @@
             fetch('{{ url_for("check_notifications") }}')
                 .then(response => response.json())
                 .then(data => {
-                    const badge = document.querySelector('.notification-icon .badge');
+                    const badge = document.querySelector('.notification-text .badge');
                     if (data.unread_count > 0) {
                         if (!badge) {
                             const newBadge = document.createElement('span');
                             newBadge.className = 'badge';
                             newBadge.textContent = data.unread_count;
-                            document.querySelector('.notification-icon').appendChild(newBadge);
+                            document.querySelector('.notification-text').appendChild(newBadge);
                         } else {
                             badge.textContent = data.unread_count;
                         }
@@ -199,3 +206,4 @@
 </body>
 
 </html>
+
