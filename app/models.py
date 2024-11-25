@@ -43,7 +43,7 @@ class UserProfile(db.Model):
 class Vacancies(db.Model):
 
     """Model which stores the information of the reviews submitted"""
-
+    # id = db.Column(db.Integer, primary_key=True)  # Primary key
     vacancyId = db.Column(db.Integer, primary_key=True)
     jobTitle = db.Column(db.String(500), index=True, nullable=False)
     jobDescription = db.Column(db.String(1000), index=True, nullable=False)

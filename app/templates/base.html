@@ -1,149 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewreport" content="width=device-width, initial-scale=1.0">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>
-            NCSU Campus Job
-        </title>
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-        
-        <style>
-            /* Styling for the bell icon and badge */
-            .notification-icon {
-                color: red; /* Red bell icon */
-                font-size: 1.5rem; /* Larger size */
-                position: relative; /* Position for the badge */
-            }
 
-            .notification-icon .badge {
-                position: absolute;
-                top: -5px;
-                right: -10px;
-                background-color: red;
-                color: white;
-                border-radius: 50%;
-                font-size: 0.8rem;
-                padding: 3px 6px;
-                display: inline-block;
-            }
+<head>
+    <meta charset="utf-8">
+    <meta name="viewreport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>
+        NCSU Campus Job
+    </title>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
 
-            /* General page styles */
-            .banner {
-                background-color: #333;
-                color: white;
-                padding: 10px 0;
-            }
+    <style>
+        /* Styling for the bell icon and badge */
+        .notification-icon {
+            color: red;
+            /* Red bell icon */
+            font-size: 1.5rem;
+            /* Larger size */
+            position: relative;
+            /* Position for the badge */
+        }
 
-            .nav-link {
-                color: white !important;
-            }
+        .notification-icon .badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            padding: 3px 6px;
+            display: inline-block;
+        }
 
-            .nav-link:hover {
-                color: #ddd !important;
-            }
+        /* General page styles */
+        .banner {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
 
-            .main {
-                margin: 20px 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container-fluid banner">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="navbar">
-                        <nav class="navbar navbar-sm">
-                            <div class="navbar-brand">NC State Campus Jobs</div>
-                            <ul class="nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/">HOME</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/dashboard">JOB VACANCIES</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/about">ABOUT</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/contact">CONTACT</a>
-                                </li>
-                                {% if current_user.is_authenticated %}
-                                    {% if current_user.is_admin %}
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ url_for('admin_dashboard') }}">ACCOUNT</a>
-                                        </li>
-                                    {% else %}
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/account">ACCOUNT</a>
-                                        </li>
-                                    {% endif %}
-                                    <!-- Notification Bell -->
-                                    <li class="nav-item">
-                                        <a class="nav-link notification-icon" href="{{ url_for('notifications') }}">
-                                            <i class="fas fa-bell"></i>
-                                            {% if unread_notifications_count > 0 %}
-                                                <span class="badge">{{ unread_notifications_count }}</span>
-                                            {% endif %}
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/logout">LOGOUT</a>
-                                    </li>
-                                {% else %}
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/login">LOGIN</a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    </div>
+        .nav-link {
+            color: white !important;
+        }
 
-                    <div class="main">
-                        {% with messages = get_flashed_messages(with_categories=true) %}
-                            {% if messages %}
-                            {% for category, message in messages %}
-                                <div class="alert alert-{{ category }}">
-                                {{ message }}
-                                </div>
-                            {% endfor %}
+        .nav-link:hover {
+            color: #ddd !important;
+        }
+
+        .main {
+            margin: 20px 0;
+        }
+
+        <style>.badge-success {
+            background-color: green;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .badge-warning {
+            background-color: orange;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .badge-danger {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .container_applied_jobs{
+            background-color: grey;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid banner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="navbar">
+                    <nav class="navbar navbar-sm">
+                        <div class="navbar-brand">NC State Campus Jobs</div>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard">JOB VACANCIES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">ABOUT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">CONTACT</a>
+                            </li>
+                            {% if current_user.is_authenticated %}
+                            {% if current_user.is_admin %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('admin_dashboard') }}">ACCOUNT</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/account">ACCOUNT</a>
+                            </li>
                             {% endif %}
-                        {% endwith %}
+                            <!-- Notification Bell -->
+                            <li class="nav-item">
+                                <a class="nav-link notification-icon" href="{{ url_for('notifications') }}">
+                                    <i class="fas fa-bell"></i>
+                                    {% if unread_notifications_count > 0 %}
+                                    <span class="badge">{{ unread_notifications_count }}</span>
+                                    {% endif %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/feedback">FEEDBACK</a> <!-- Feedback link added -->
+                            </li>
+            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">LOGOUT</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">LOGIN</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
 
-                        {% block content %}{% endblock %}
+                <div class="main">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
                     </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+
+                    {% block content %}{% endblock %}
                 </div>
             </div>
         </div>
+    </div>
 
-        <script>
-            setInterval(function() {
-                fetch('{{ url_for("check_notifications") }}')
-                    .then(response => response.json())
-                    .then(data => {
-                        const badge = document.querySelector('.notification-icon .badge');
-                        if (data.unread_count > 0) {
-                            if (!badge) {
-                                const newBadge = document.createElement('span');
-                                newBadge.className = 'badge';
-                                newBadge.textContent = data.unread_count;
-                                document.querySelector('.notification-icon').appendChild(newBadge);
-                            } else {
-                                badge.textContent = data.unread_count;
-                            }
-                        } else if (badge) {
-                            badge.remove();
+    <script>
+        setInterval(function () {
+            fetch('{{ url_for("check_notifications") }}')
+                .then(response => response.json())
+                .then(data => {
+                    const badge = document.querySelector('.notification-icon .badge');
+                    if (data.unread_count > 0) {
+                        if (!badge) {
+                            const newBadge = document.createElement('span');
+                            newBadge.className = 'badge';
+                            newBadge.textContent = data.unread_count;
+                            document.querySelector('.notification-icon').appendChild(newBadge);
+                        } else {
+                            badge.textContent = data.unread_count;
                         }
-                    });
-            }, 5000); // Poll every 5 seconds
-        </script>
-    </body>
-</html>
+                    } else if (badge) {
+                        badge.remove();
+                    }
+                });
+        }, 5000); // Poll every 5 seconds
+    </script>
 
+    <script>
+        function initiateApplication(vacancyId) {
+            const button = document.getElementById(`apply-btn-${vacancyId}`);
+            button.textContent = 'Initiated';
+            button.disabled = true; // Optional: Disable the button after changing the text
+        }
+    </script>
+
+</body>
+
+</html>

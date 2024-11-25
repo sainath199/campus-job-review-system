@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Applicants for {{ job.jobTitle }}</h2>
+    {% if applicants %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Applicant ID</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for applicant in applicants %}
+                <tr>
+                    <td>{{ applicant.user_id }}</td>
+                    <td>{{ applicant.status }}</td>
+                    <td>
+                        <form action="{{ url_for('approve_application', job_id=job.vacancyId, user_id=applicant.user_id) }}" method="POST">
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                        <form action="{{ url_for('reject_application', job_id=job.vacancyId, user_id=applicant.user_id) }}" method="POST">
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-info">No applicants for this job yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

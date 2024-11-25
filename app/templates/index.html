@@ -27,10 +27,19 @@
         <button
           type="button"
           class="btn btn-danger btn-lg"
-          onclick="window.location.href='{{ url_for('post_job') }}';"
+          onclick="window.location.href='{{ url_for('post_job_apply') }}';"
         >
           Post a Job
         </button>
+
+        <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href='{{ url_for('apply') }}';" >
+          Apply
+        </button>
+
+        <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href='{{ url_for('applied_jobs_list') }}';" >
+          Job Tracker
+        </button>
+
       </div>
     </div>
   </div>

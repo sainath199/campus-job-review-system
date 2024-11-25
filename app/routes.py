@@ -35,13 +35,13 @@ def admin_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-@app.route('/apply/<int:vacancy_id>', methods=['POST'])
-@login_required
-def apply_job(vacancy_id):
-    # Assuming current_user.id gives the logged-in user's ID
-    log_user_activity(user_id=current_user.id, vacancy_id=vacancy_id, status='applied')
-    flash('Application submitted successfully!', 'success')
-    return redirect(url_for('dashboard'))
+@app.route("/apply")
+def apply():
+    return redirect(url_for('job_listings'))
+
+@app.route("/job_tracker")
+def job_tracker():
+    return render_template("job_tracker.html")
 
 
 @app.route("/notifications/mark_read", methods=["POST"])
@@ -54,7 +54,31 @@ def mark_notifications_read():
     flash("All notifications marked as read.", "success")
     return redirect(url_for("notifications"))
 
-
+@app.route("/post_job_apply", methods=["GET", "POST"])
+@login_required
+def post_job_apply():
+    if not current_user.is_admin:  # Check if the current user is not an admin
+        return abort(403)
+    form = JobPostingForm()
+    if form.validate_on_submit():
+        print("Form validated successfully.")
+        new_job = Vacancies(
+            jobTitle=form.jobTitle.data,
+            jobDescription=form.jobDescription.data,
+            jobLocation=form.jobLocation.data,
+            jobPayRate=float(form.jobPayRate.data),
+            maxHoursAllowed=form.maxHoursAllowed.data,
+        )
+        
+        db.session.add(new_job)
+        db.session.commit()
+        flash(
+            "Job posted successfully!", "success"
+        )
+        return redirect(url_for("job_listings_apply"))
+    else:
+        print("Form errors:",form.errors)
+    return render_template("post_job.html", form=form)
 
 @app.route("/post_job", methods=["GET", "POST"])
 @login_required
@@ -255,6 +279,16 @@ def profile():
     resume_url = url_for('static', filename='resumes/' + os.path.basename(current_user.resume_file_path)) if current_user.resume_file_path else None
     return render_template("account.html", title="Account", form=form, resume_url=resume_url)
 
+@app.route("/feedback", methods=['GET', 'POST'])
+@login_required
+def feedback():
+    if request.method == 'POST':
+        feedback_content = request.form.get('feedback')
+        # You can save this feedback to the database or process it as needed
+        flash("Thank you for your feedback!", "success")
+        return redirect(url_for('feedback'))
+    return render_template('feedback.html')
+
 @app.route("/upload_resume", methods=["GET", "POST"])
 @login_required
 def upload_resume():
@@ -360,14 +394,12 @@ def update_review(review_id):
         "create_review.html", title="Update Review", form=form, legend="Update Review"
     )
 
-
-
-
 @app.route("/dashboard")
 @login_required
 def dashboard():
     job_statistics = get_all_jobs_statistics()
     return render_template('dashboard.html', job_statistics=job_statistics)
+
 
 @app.route("/job_listings", methods=['GET'])
 def job_listings():
@@ -401,5 +433,68 @@ def job_listings():
     
     return render_template("dashboard.html", vacancies=vacancies)
 
+applied_jobs = []  # Temporary in-memory storage for applied jobs
 
+@app.route('/apply/<int:job_id>', methods=['POST'])
+@login_required
+def apply_job(job_id):
+    job = Vacancies.query.get_or_404(job_id)
+    if not any(applied_job['id'] == job_id for applied_job in applied_jobs):
+        applied_jobs.append({
+            'id': job.vacancyId,
+            'title': job.jobTitle,
+            'location': job.jobLocation,
+            'pay_rate': job.jobPayRate,
+            'user_id': current_user.id,
+            'status': 'Initiated'  # Initial status
+        })
+        flash(f"You have applied for {job.jobTitle}.", "success")
+    else:
+        flash(f"You already applied for {job.jobTitle}.", "info")
+    return redirect(url_for('job_listings'))
 
+@app.route('/applied_jobs')
+@login_required
+def applied_jobs_list():
+    user_applied_jobs = [job for job in applied_jobs if job['user_id'] == current_user.id]
+    return render_template('applied_jobs.html', applied_jobs=user_applied_jobs)
+
+@app.route('/cancel_application/<int:job_id>', methods=['POST'])
+@login_required
+def cancel_application(job_id):
+    global applied_jobs
+    applied_jobs = [job for job in applied_jobs if not (job['id'] == job_id and job['user_id'] == current_user.id)]
+    flash("Application canceled successfully.", "success")
+    return redirect(url_for('applied_jobs_list'))
+
+@app.route('/show_applicants/<int:job_id>', methods=['GET'])
+@login_required
+@admin_required
+def show_applicants(job_id):
+    applicants = [job for job in applied_jobs if job['id'] == job_id]
+    job = Vacancies.query.get_or_404(job_id)
+    return render_template('show_applicants.html', applicants=applicants, job=job)
+
+@app.route('/approve_application/<int:job_id>/<int:user_id>', methods=['POST'])
+@login_required
+@admin_required
+def approve_application(job_id, user_id):
+    global applied_jobs
+    for job in applied_jobs:
+        if job['id'] == job_id and job['user_id'] == user_id:
+            job['status'] = 'Approved'  # Update status
+            flash(f"Application for job ID {job_id} approved.", "success")
+            break
+    return redirect(url_for('show_applicants', job_id=job_id))
+
+@app.route('/reject_application/<int:job_id>/<int:user_id>', methods=['POST'])
+@login_required
+@admin_required
+def reject_application(job_id, user_id):
+    global applied_jobs
+    for job in applied_jobs:
+        if job['id'] == job_id and job['user_id'] == user_id:
+            job['status'] = 'Rejected'  # Update status instead of removing
+            flash(f"Application for job ID {job_id} rejected.", "danger")
+            break
+    return redirect(url_for('show_applicants', job_id=job_id))
