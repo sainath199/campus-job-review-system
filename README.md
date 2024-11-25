@@ -8,7 +8,7 @@
 <a href="https://github.com/sainath199/campus-job-review-system/blob/main/LICENSE">
   <img alt="License" src="https://img.shields.io/github/license/sainath199/campus-job-review-system">
 </a>
-[![GitHub Release](https://img.shields.io/github/release/sainath199/campus-job-review-system.svg)](https://github.com/sainath199/campus-job-review-system/releases) [![code-coverage](https://img.shields.io/badge/code--coverage-64%25-green)](test_coverage.jpg)
+[![GitHub Release](https://img.shields.io/github/release/sainath199/campus-job-review-system.svg)](https://github.com/sainath199/campus-job-review-system/releases) 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Test and Formatting](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml/badge.svg)](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml)
 [![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/sainath199/f90d8ff63781978b73c28561177358b3/raw/coverage.json)](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml)
