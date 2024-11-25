@@ -88,4 +88,3 @@ jobs:
           message: ${{ env.SECURITY_STATUS }}
           color: ${{ env.SECURITY_STATUS == 'Pass' && 'green' || 'red' }}
         continue-on-error: true
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
