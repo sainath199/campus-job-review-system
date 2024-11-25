@@ -1,21 +1,23 @@
  # Campus Job Review System
  
-<!-- <a href="https://github.com/Fall-2024-SE-Group/campus-job-review-system/actions" alt="Build Status"><img src="https://img.shields.io/github/workflow/status/github.com/Fall-2024-SE-Group/campus-job-review-system/Build%20main" /></a> -->
+<!-- <a href="https://github.com/sainath199/campus-job-review-system/actions" alt="Build Status"><img src="https://img.shields.io/github/workflow/status/github.com/sainath199/campus-job-review-system/Build%20main" /></a> -->
 <!-- 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/user-attachments/assets/website?color=magenta&label=Documentation)
 -->
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14027357.svg)](https://doi.org/10.5281/zenodo.14027357)
-<a href="https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/LICENSE">
-  <img alt="License" src="https://img.shields.io/github/license/Fall-2024-SE-Group/campus-job-review-system">
+<a href="https://github.com/sainath199/campus-job-review-system/blob/main/LICENSE">
+  <img alt="License" src="https://img.shields.io/github/license/sainath199/campus-job-review-system">
 </a>
-[![GitHub Release](https://img.shields.io/github/release/Fall-2024-SE-Group/campus-job-review-system.svg)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/releases) [![code-coverage](https://img.shields.io/badge/code--coverage-64%25-green)](test_coverage.jpg)
-[![GitHub contributors](https://img.shields.io/github/contributors/Fall-2024-SE-Group/campus-job-review-system)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/graphs/contributors)
-[![Open Issues](https://img.shields.io/github/issues/Fall-2024-SE-Group/campus-job-review-system)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/issues)
-![Closed issues](https://img.shields.io/github/issues-closed/Fall-2024-SE-Group/campus-job-review-system?color=bright-green)
-[![Pull Requests](https://img.shields.io/github/issues-pr/Fall-2024-SE-Group/campus-job-review-system)](https://github.com/Fall-2024-SE-Group/campus-job-review-system)
+[![GitHub Release](https://img.shields.io/github/release/sainath199/campus-job-review-system.svg)](https://github.com/sainath199/campus-job-review-system/releases) [![code-coverage](https://img.shields.io/badge/code--coverage-64%25-green)](test_coverage.jpg)
+[![GitHub contributors](https://img.shields.io/github/contributors/sainath199/campus-job-review-system)](https://github.com/sainath199/campus-job-review-system/graphs/contributors)
+[![Open Issues](https://img.shields.io/github/issues/sainath199/campus-job-review-system)](https://github.com/sainath199/campus-job-review-system/issues)
+![Closed issues](https://img.shields.io/github/issues-closed/sainath199/campus-job-review-system?color=bright-green)
+[![Pull Requests](https://img.shields.io/github/issues-pr/sainath199/campus-job-review-system)](https://github.com/sainath199/campus-job-review-system)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
-[![Flake8 Config](https://img.shields.io/badge/config-.flake8-blue)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/actions/workflows/flake8.yml)
+[![Test and Formatting](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml/badge.svg)](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml)
+[![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/sainath199/f90d8ff63781978b73c28561177358b3/raw/coverage.json)](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml)
+[![Static Code Analysis](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/sainath199/6e6740fb4d21afa29af5a1eba71cedba/raw/Static_code_analysis.json)](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml)
+[![Security Scans](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/sainath199/e9d969e042f2cc3e639dbac2a074ba92/raw/Security_scan.json)](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml)
 
 The Campus Job Review System is a Flask App which has a SQL database for storage. It is created using Python.This website allows NCSU students to read reviews of any job that is open on campus. The portal's objective is to assist students in better comprehending the job description and the work through the experiences of their fellow students. Students can post reviews on the website for others to read. The pupils' anonymity is preserved so they can submit candid evaluations. Furthermore, the website offers user account management, allowing users to store their Resume and contact details. Only that specific user can modify these details after logging in (using the Account Page).
 
@@ -48,11 +50,11 @@ To check whether you have python installed or not, you can open CMD or a Termina
 
 If this is not the case, then you need to download python installer package from [Python Installers](https://www.python.org/downloads/) based on your system's operating system and install it and you can further clone this repository to execute the scripts.
 
-You can refer [Install.md](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/install.md) for the complete installation steps based on your OS.
+You can refer [Install.md](https://github.com/sainath199/campus-job-review-system/blob/main/install.md) for the complete installation steps based on your OS.
 
 
 ## Demo Video
-[(Project2 (1) (1).mp4)](https://github.com/Fall-2024-SE-Group/campus-job-review-system/blob/main/Project2%20(1)%20(1).mp4)
+[(Project2 (1) (1).mp4)](https://github.com/sainath199/campus-job-review-system/blob/main/Project2%20(1)%20(1).mp4)
 
 
 
