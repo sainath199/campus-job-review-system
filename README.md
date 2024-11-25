@@ -67,7 +67,7 @@ The rules listed below are to be followed by the ones who will be contributing t
 
 ### Chat Channel Screenshot
 
-![image](chat)
+![image](chat.png)
 
 
 ## Contributors
