@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pytest flake8 bandit
+          pip install pytest flake8 bandit coverage
 
       - name: Run Tests
         run: |
