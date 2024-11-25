@@ -22,16 +22,20 @@ The Campus Job Review System is a Flask App which has a SQL database for storage
 ##New Features
 
  Feature 1 - Real time tracking of application status
- <img src="feature1.png" alt="Sample Image" width="300">
- 
+ <br>
+ <img src="feature1.png" alt="Sample Image" width="500">
+
  Feature 2 - Implemented a Feedback page
- <img src="feature2.png" alt="Sample Image" width="300">
+ <br>
+ <img src="feature2.png" alt="Sample Image" width="500">
  
  Feature 3 - User Review Statistics 
- <img src="feature3.png" alt="Sample Image" width="300">
+ <br>
+ <img src="feature3.png" alt="Sample Image" width="500">
  
  Feature 4 - Notifications and alerts
- <img src="feature4.png" alt="Sample Image" width="300">
+ <br>
+ <img src="feature4.png" alt="Sample Image" width="500">
  
 
 ## Pre-requisites
