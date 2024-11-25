@@ -19,9 +19,10 @@
 
 The Campus Job Review System is a Flask App which has a SQL database for storage. It is created using Python.This website allows NCSU students to read reviews of any job that is open on campus. The portal's objective is to assist students in better comprehending the job description and the work through the experiences of their fellow students. Students can post reviews on the website for others to read. The pupils' anonymity is preserved so they can submit candid evaluations. Furthermore, the website offers user account management, allowing users to store their Resume and contact details. Only that specific user can modify these details after logging in (using the Account Page).
 
- ![alt text](interface_image_2.jpeg)
- ![alt text](interface_image_1.jpeg)
- ![alt text](account_page.jpeg)
+ ![alt text](feature_1.png)
+ ![alt text](feature2.png)
+ ![alt text](feature3.png)
+ ![alt text](feature4.png)
  
 
 ## Pre-requisites
