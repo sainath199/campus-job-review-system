@@ -10,9 +10,6 @@
 </a>
 [![GitHub Release](https://img.shields.io/github/release/sainath199/campus-job-review-system.svg)](https://github.com/sainath199/campus-job-review-system/releases) [![code-coverage](https://img.shields.io/badge/code--coverage-64%25-green)](test_coverage.jpg)
 [![GitHub contributors](https://img.shields.io/github/contributors/sainath199/campus-job-review-system)](https://github.com/sainath199/campus-job-review-system/graphs/contributors)
-[![Open Issues](https://img.shields.io/github/issues/sainath199/campus-job-review-system)](https://github.com/sainath199/campus-job-review-system/issues)
-![Closed issues](https://img.shields.io/github/issues-closed/sainath199/campus-job-review-system?color=bright-green)
-[![Pull Requests](https://img.shields.io/github/issues-pr/sainath199/campus-job-review-system)](https://github.com/sainath199/campus-job-review-system)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Test and Formatting](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml/badge.svg)](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml)
 [![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/sainath199/f90d8ff63781978b73c28561177358b3/raw/coverage.json)](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml)
