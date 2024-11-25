@@ -1,36 +1,91 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
-name: Build Dev
-
 on:
+  schedule:
+    - cron: '*/15 * * * *'  # Run every 15 minutes
   push:
-    branches: [ "dev_1" ]
-  pull_request:
-    branches: [ "dev_1" ]
-
-permissions:
-  contents: read
+    branches:
+      - main
+      - development
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest flake8 bandit
+
+      - name: Run Tests
+        run: |
+          coverage run -m pytest test/
+          COVERAGE=$(coverage report -m | grep 'TOTAL' | awk '{print $4}' | cut -d '%' -f1)
+          echo "COVERAGE=$COVERAGE" >> $GITHUB_ENV
+      
+      - name: Create Coverage Badge
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: f90d8ff63781978b73c28561177358b3
+          filename: coverage.json
+          label: Coverage
+          message: ${{ env.COVERAGE }}%  # Set the percentage value
+          color: ${{ steps.set_coverage.outputs.coverage >= 70 && 'green' || 'red' }}  # Use GitHub Actions conditional syntax
+        continue-on-error: true
+
+      - name: Run Flake8 (Static Code Analysis)
+        run: |
+          flake8 crudapp.py --max-line-length=120
+        continue-on-error: true
+
+      - name: Check Flake8 result and set status
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "STATIC_CODE_STATUS=Pass" >> $GITHUB_ENV
+          else
+            echo "STATIC_CODE_STATUS=Fail" >> $GITHUB_ENV
+          fi
+
+      - name: Create Static Code Analysis Badge
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 6e6740fb4d21afa29af5a1eba71cedba
+          filename: Static_code_analysis.json
+          label: Static Code Analysis
+          message: ${{ env.STATIC_CODE_STATUS }}
+          color: ${{ env.STATIC_CODE_STATUS == 'Pass' && 'green' || 'red' }}
+        continue-on-error: true
+
+      - name: Run Bandit (Security Scanning)
+        run: |
+          bandit -r app/
+        continue-on-error: true
+
+      - name: Check Bandit result and set status
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "SECURITY_STATUS=Pass" >> $GITHUB_ENV
+          else
+            echo "SECURITY_STATUS=Fail" >> $GITHUB_ENV
+          fi
+
+      - name: Create Security Scan Badge
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: e9d969e042f2cc3e639dbac2a074ba92
+          filename: Security_scan.json
+          label: Security Scan
+          message: ${{ env.SECURITY_STATUS }}
+          color: ${{ env.SECURITY_STATUS == 'Pass' && 'green' || 'red' }}
+        continue-on-error: true
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
