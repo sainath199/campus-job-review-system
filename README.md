@@ -17,7 +17,22 @@
 
 The Campus Job Review System is a Flask App which has a SQL database for storage. It is created using Python.This website allows NCSU students to read reviews of any job that is open on campus. The portal's objective is to assist students in better comprehending the job description and the work through the experiences of their fellow students. Students can post reviews on the website for others to read. The pupils' anonymity is preserved so they can submit candid evaluations. Furthermore, the website offers user account management, allowing users to store their Resume and contact details. Only that specific user can modify these details after logging in (using the Account Page).
 
-##New Features
+- Read reviews of on-campus jobs posted by peers.
+- Post reviews of jobs to share their experiences.
+- Apply for on-campus jobs and track their application statuses.
+- Receive notifications about newly added job opportunities.
+- Analyze job reviews through comprehensive analytics.
+- Provide feedback to improve the platform.
+With a SQL database for storage, this system preserves the anonymity of reviews while ensuring user account security and resume management.
+
+## What's New?
+The Campus Job Review System now includes these exciting features:
+
+- Job Application Management: Users can apply for jobs directly and track application statuses.
+- Job Tracker: Displays all jobs applied for along with their statuses.
+- Notifications: Alerts users when new jobs are added to the system.
+- Job Review Analytics: Provides insightful analytics for job reviews, including average ratings and review counts.
+- Feedback System: Enables users to submit feedback to improve the platform.
 
  <b>Feature 1 - Real time tracking of application status</b>
  <br>
@@ -54,32 +69,68 @@ You can refer [Install.md](https://github.com/sainath199/campus-job-review-syste
 
 
 
-## Poster for Stage 1
+## Usage
+Here’s an overview of some key features:
 
+- Apply for Jobs: View job listings and apply directly.
+- Track Applications: Monitor the status of your job applications.
+- Post Job Reviews: Share your experiences and insights about on-campus jobs.
+- Analyze Job Reviews: Get a detailed analysis of reviews with charts and scores.
+- Manage Your Profile: Update contact information and upload resumes securely.
+- Notifications: Stay updated with alerts on newly posted jobs.
+- Provide Feedback: Use the feedback page to share suggestions or report issues.
 
-## Contribution Code of Conduct
+## Testing
 
-The rules listed below are to be followed by the ones who will be contributing to the code in the repository:
-  1)Follow the code quality standards <br>
-  2)Testing: For every new feature or bug fix, write unit tests to ensure code correctness.<br>
-  Ensure existing tests pass: Run all tests before submitting a pull request (PR) to ensure no existing functionality is broken.<br>
-  Follow test coverage requirements: Aim to meet or exceed the project’s test coverage targets.<br>
-  3)Keep commits small and relevant to a single task or fix. Write clear commit messages (e.g., "Fix issue with X" or "Add feature Y").<br>
-  4)Use Markdown: Follow any guidelines for Markdown formatting and structuring of documentation files (e.g., README.md, CONTRIBUTING.md).<br>
-  5) Branches: Use separate branches when and where needed.<br>
-  6)Handle sensitive information carefully: Avoid hardcoding sensitive information, such as API keys or passwords. Use environment variables or secure configuration files. <br>
-    Follow secure coding practices: Be mindful of security implications in your code (e.g., SQL injection, cross-site scripting).
-  
+We use pytest to perform testing on all unit tests together. The command needs to be run from the home directory of the project. The command is:
+```
+python -m pytest test/
+```
 
+## Code Coverage
 
-### Code Coverage Screenshot
+Code coverage is part of the build. Every time new code is pushed to the repository, the build is run, and along with it, code coverage is computed. This can be viewed by selecting the build, and then choosing the codecov pop-up on hover.
 
+Locally, we use the coverage package in python for code coverage. The commands to check code coverage in python are as follows:
 
+```
+coverage run -m pytest test/
+coverage report
+```
+
+Please note: A coverage below 70% will cause the build to fail.
+
+## Who Should Use Campus job review system?
+This platform is ideal for:
+
+- Students: Looking for on-campus job opportunities and reviews to make informed decisions.
+- Job Seekers: Wanting to track their job applications and receive notifications on new opportunities.
+- Reviewers: Sharing their experiences with peers in a secure, anonymous manner.
+- Administrators: Managing job postings and analyzing feedback for continuous improvement.
+
+## What More Can Be Done?
+Check out the issue list here to explore potential improvements and contribute to the project.
+
+## Troubleshooting
+
+- Database Issues: Ensure database migrations are set up correctly with flask db upgrade.
+- Environment Errors: Check if the FLASK_APP variable is set properly and your virtual environment is activated.
+- Dependency Issues: Run pip install -r requirements.txt to ensure all dependencies are installed.
+- Server Access Issues: Use --host=0.0.0.0 when running the Flask app to access it externally.
+
+## Contributing
+Contributions are welcome! Please read the CONTRIBUTING.md for more details.
+
+- Fork the repository and create a new branch.
+- Submit a pull request with a description of changes.
+- Test Coverage: Ensure changes pass all tests and maintain 70%+ coverage.
+
+## License
+- This project is licensed under the MIT License. See the LICENSE file for details.
 
 ### Chat Channel Screenshot
 
 ![image](chat.png)
-
 
 ## Contributors
 
