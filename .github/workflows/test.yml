@@ -44,7 +44,7 @@ jobs:
 
       - name: Run Flake8 (Static Code Analysis)
         run: |
-          flake8 crudapp.py --max-line-length=120
+          flake8 new_crudapp.py --max-line-length=120
         continue-on-error: true
 
       - name: Check Flake8 result and set status
