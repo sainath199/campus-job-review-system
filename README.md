@@ -66,11 +66,10 @@ If this is not the case, then you need to download python installer package from
 
 You can refer [Install.md](https://github.com/sainath199/campus-job-review-system/blob/main/install.md) for the complete installation steps based on your OS.
 
-
 ## Demo Video
 
+[![Watch the demo video](https://img.youtube.com/vi/ShoX_AONV6I/0.jpg)](https://www.youtube.com/watch?v=ShoX_AONV6I)
 
-[![Watch the Demo](https://img.youtube.com/vi/ShoX_AONV6I&ab/0.jpg)](https://www.youtube.com/watch?v=ShoX_AONV6I&ab_channel=MonaSreeMuppala)
 
 ## Usage
 Here’s an overview of some key features:
