@@ -58,6 +58,7 @@ pip install -r requirements.txt
 
 ``` bash
 set FLASK_APP=crudapp.py
+set SECRET_KEY=your-secret-key-here
 ```
 
 *6. Set up the database*
@@ -110,6 +111,7 @@ python3 --version
 
 To create/add new tables, run the following commands before starting the server:
 ```bash
+export SECRET_KEY='your-secret-key-here'
 flask shell
 from app import db
 db.create_all()
