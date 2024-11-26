@@ -15,6 +15,9 @@
 [![Static Code Analysis](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/sainath199/6e6740fb4d21afa29af5a1eba71cedba/raw/Static_code_analysis.json)](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml)
 [![Security Scans](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/sainath199/e9d969e042f2cc3e639dbac2a074ba92/raw/Security_scan.json)](https://github.com/sainath199/campus-job-review-system/actions/workflows/test.yml)
 
+
+![Campus Job Review System](https://github.com/sainath199/campus-job-review-system/blob/main/new_campus_job_review.png)
+
 The Campus Job Review System is a Flask App which has a SQL database for storage. It is created using Python.This website allows NCSU students to read reviews of any job that is open on campus. The portal's objective is to assist students in better comprehending the job description and the work through the experiences of their fellow students. Students can post reviews on the website for others to read. The pupils' anonymity is preserved so they can submit candid evaluations. Furthermore, the website offers user account management, allowing users to store their Resume and contact details. Only that specific user can modify these details after logging in (using the Account Page).
 
 - Read reviews of on-campus jobs posted by peers.
@@ -67,7 +70,7 @@ You can refer [Install.md](https://github.com/sainath199/campus-job-review-syste
 ## Demo Video
 
 
-
+[![Watch the Demo](https://img.youtube.com/vi/ShoX_AONV6I&ab/0.jpg)](https://www.youtube.com/watch?v=ShoX_AONV6I&ab_channel=MonaSreeMuppala)
 
 ## Usage
 Here’s an overview of some key features:
