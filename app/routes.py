@@ -12,7 +12,7 @@ import os
 
 
 
-app.config["SECRET_KEY"] = "5791628bb0b13ce0c676dfde280ba245"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 app.config["UPLOAD_FOLDER"] = "app/static/resumes"
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx'}
 
