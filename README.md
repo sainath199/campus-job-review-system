@@ -50,12 +50,11 @@ You can refer [Install.md](https://github.com/sainath199/campus-job-review-syste
 
 
 ## Demo Video
-[(Project2 (1) (1).mp4)](https://github.com/sainath199/campus-job-review-system/blob/main/Project2%20(1)%20(1).mp4)
+
 
 
 
 ## Poster for Stage 1
-![image](https://github.com/user-attachments/assets/408451c7-bb33-4996-842e-b254a20c440d)
 
 
 ## Contribution Code of Conduct
@@ -75,7 +74,7 @@ The rules listed below are to be followed by the ones who will be contributing t
 
 ### Code Coverage Screenshot
 
-![alt text](test_coverage.jpg)
+
 
 ### Chat Channel Screenshot
 
