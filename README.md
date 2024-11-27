@@ -28,7 +28,7 @@ The Campus Job Review System is a Flask App which has a SQL database for storage
 - Provide feedback to improve the platform.
 With a SQL database for storage, this system preserves the anonymity of reviews while ensuring user account security and resume management.
 
-<img src="images/9boqwp.gif" alt="Sample Image" width="700">
+<img src="images/project3.gif" alt="Sample Image" width="700">
 
 ## What's New?
 The Campus Job Review System now includes these exciting features:
